@@ -32,7 +32,7 @@ public class CategoryService {
 	}
 	
 	public Category addNew(Category category) {
-		category.setCreateDate(new Date());
+		category.setCreatedDate(new Date());
 		return categoryRepository.save(category);
 	}
 	

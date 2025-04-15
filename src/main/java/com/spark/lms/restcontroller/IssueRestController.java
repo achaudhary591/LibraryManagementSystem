@@ -96,7 +96,7 @@ public class IssueRestController {
 				bookService.save(book);
 			}
 			
-			issue.setReturned( Constants.BOOK_RETURNED );
+			issue.setStatus( Constants.BOOK_RETURNED );
 			issueService.save(issue);
 			
 			return "successful";

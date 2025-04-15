@@ -31,7 +31,7 @@ public class IssuedBookService {
     
     public IssuedBook returnBook(IssuedBook issuedBook) {
         issuedBook.setReturned(Constants.BOOK_RETURNED);
-        issuedBook.setReturnDate(new Date());
+        issuedBook.setReturnedDate(new Date());
         return issuedBookRepository.save(issuedBook);
     }
     

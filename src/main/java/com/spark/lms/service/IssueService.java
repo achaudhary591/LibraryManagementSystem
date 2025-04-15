@@ -51,8 +51,8 @@ public class IssueService {
         calendar.add(Calendar.DAY_OF_MONTH, 14);
         issue.setExpectedReturnDate(calendar.getTime());
         
-        // Set returned status to not returned
-        issue.setReturned(Constants.BOOK_NOT_RETURNED);
+        // Set status to not returned
+        issue.setStatus(Constants.BOOK_NOT_RETURNED);
         
         return issueRepository.save(issue);
     }

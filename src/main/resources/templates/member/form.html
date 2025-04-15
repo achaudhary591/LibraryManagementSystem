@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- Meta, title, CSS, favicons, etc. -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LibTrack - Member Form</title>
+
+<th:block th:replace="fragments/styles :: common"></th:block>
+
+</head>
+<body class="nav-md">
+	<div class="container body">
+		<div class="main_container">
+
+			<th:block th:replace="fragments/sidemenu :: menu"></th:block>
+			<th:block th:replace="fragments/topmenu :: menu"></th:block>
+
+			<!-- page content -->
+			<div class="right_col" role="main">
+				<div class="">
+					<div class="page-title">
+						<div class="title_left">
+							<h3 th:text="${member.id == null} ? 'Add Member' : 'Edit Member'"></h3>
+						</div>
+					</div>
+
+					<div class="clearfix"></div>
+
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div class="x_panel">
+								<div class="x_title">
+									<h2 th:text="${member.id == null} ? 'Add Member' : 'Edit Member'"></h2>
+									<div class="clearfix"></div>
+								</div>
+								<div class="x_content">
+									<form th:action="@{/member/add}" 
+										  method="post" class="form-horizontal form-label-left" th:object="${member}">
+										
+										<input type="hidden" th:field="*{id}" />
+										
+										<div class="form-group">
+											<label class="control-label col-md-3 col-sm-3 col-xs-12" for="type">Member Type <span class="required">*</span>
+											</label>
+											<div class="col-md-6 col-sm-6 col-xs-12">
+												<select class="form-control" th:field="*{type}" id="type">
+													<option value="">Select Type</option>
+													<option th:each="type : ${memberTypes}" th:value="${type}" th:text="${type}"></option>
+												</select>
+												<div class="error" th:if="${#fields.hasErrors('type')}" th:errors="*{type}"></div>
+											</div>
+										</div>
+										
+										<div class="form-group">
+											<label class="control-label col-md-3 col-sm-3 col-xs-12" for="firstName">First Name <span class="required">*</span>
+											</label>
+											<div class="col-md-6 col-sm-6 col-xs-12">
+												<input type="text" th:field="*{firstName}" id="firstName" class="form-control col-md-7 col-xs-12">
+												<div class="error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></div>
+											</div>
+										</div>
+										
+										<div class="form-group">
+											<label class="control-label col-md-3 col-sm-3 col-xs-12" for="middleName">Middle Name <span class="required">*</span>
+											</label>
+											<div class="col-md-6 col-sm-6 col-xs-12">
+												<input type="text" th:field="*{middleName}" id="middleName" class="form-control col-md-7 col-xs-12">
+												<div class="error" th:if="${#fields.hasErrors('middleName')}" th:errors="*{middleName}"></div>
+											</div>
+										</div>
+										
+										<div class="form-group">
+											<label class="control-label col-md-3 col-sm-3 col-xs-12" for="lastName">Last Name
+											</label>
+											<div class="col-md-6 col-sm-6 col-xs-12">
+												<input type="text" th:field="*{lastName}" id="lastName" class="form-control col-md-7 col-xs-12">
+											</div>
+										</div>
+										
+										<div class="form-group">
+											<label class="control-label col-md-3 col-sm-3 col-xs-12" for="gender">Gender <span class="required">*</span>
+											</label>
+											<div class="col-md-6 col-sm-6 col-xs-12">
+												<select class="form-control" th:field="*{gender}" id="gender">
+													<option value="">Select Gender</option>
+													<option value="Male">Male</option>
+													<option value="Female">Female</option>
+													<option value="Other">Other</option>
+												</select>
+												<div class="error" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></div>
+											</div>
+										</div>
+										
+										<div class="form-group">
+											<label class="control-label col-md-3 col-sm-3 col-xs-12" for="dateOfBirth">Date of Birth <span class="required">*</span>
+											</label>
+											<div class="col-md-6 col-sm-6 col-xs-12">
+												<input type="date" th:field="*{dateOfBirth}" id="dateOfBirth" class="form-control col-md-7 col-xs-12">
+												<div class="error" th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}"></div>
+											</div>
+										</div>
+										
+										<div class="form-group">
+											<label class="control-label col-md-3 col-sm-3 col-xs-12" for="contact">Contact
+											</label>
+											<div class="col-md-6 col-sm-6 col-xs-12">
+												<input type="text" th:field="*{contact}" id="contact" class="form-control col-md-7 col-xs-12">
+											</div>
+										</div>
+										
+										<div class="form-group">
+											<label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Email
+											</label>
+											<div class="col-md-6 col-sm-6 col-xs-12">
+												<input type="email" th:field="*{email}" id="email" class="form-control col-md-7 col-xs-12">
+											</div>
+										</div>
+										
+										<!-- Student Account Creation Section -->
+										<div id="studentAccountSection" style="display: none;">
+											<div class="ln_solid"></div>
+											<div class="form-group">
+												<label class="control-label col-md-3 col-sm-3 col-xs-12">Create Student Account</label>
+												<div class="col-md-6 col-sm-6 col-xs-12">
+													<div class="checkbox">
+														<label>
+															<input type="checkbox" id="createAccount" name="createAccount" value="true"> Create login account for this student
+														</label>
+													</div>
+												</div>
+											</div>
+											
+											<div id="accountDetails" style="display: none;">
+												<div class="form-group">
+													<label class="control-label col-md-3 col-sm-3 col-xs-12" for="username">Username <span class="required">*</span>
+													</label>
+													<div class="col-md-6 col-sm-6 col-xs-12">
+														<input type="text" name="username" id="username" class="form-control col-md-7 col-xs-12">
+													</div>
+												</div>
+												
+												<div class="form-group">
+													<label class="control-label col-md-3 col-sm-3 col-xs-12" for="password">Password <span class="required">*</span>
+													</label>
+													<div class="col-md-6 col-sm-6 col-xs-12">
+														<input type="password" name="password" id="password" class="form-control col-md-7 col-xs-12">
+													</div>
+												</div>
+											</div>
+										</div>
+										
+										<div class="ln_solid"></div>
+										<div class="form-group">
+											<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+												<a th:href="@{/member/list}" class="btn btn-primary">Cancel</a>
+												<button type="submit" class="btn btn-success">Submit</button>
+											</div>
+										</div>
+
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /page content -->
+
+			<th:block th:replace="fragments/footer :: footer"></th:block>
+
+		</div>
+	</div>
+
+	<th:block th:replace="fragments/scripts :: common"></th:block>
+	
+	<script>
+		$(document).ready(function() {
+			// Show/hide student account section based on member type
+			$('#type').change(function() {
+				if ($(this).val() === 'Student') {
+					$('#studentAccountSection').show();
+				} else {
+					$('#studentAccountSection').hide();
+					$('#createAccount').prop('checked', false);
+					$('#accountDetails').hide();
+				}
+			});
+			
+			// Show/hide account details based on checkbox
+			$('#createAccount').change(function() {
+				if ($(this).is(':checked')) {
+					$('#accountDetails').show();
+				} else {
+					$('#accountDetails').hide();
+				}
+			});
+			
+			// Trigger change event on page load to set initial state
+			$('#type').trigger('change');
+		});
+	</script>
+</body>
+</html>

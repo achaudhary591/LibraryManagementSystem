@@ -21,7 +21,7 @@ public class Book implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
     
@@ -30,31 +30,37 @@ public class Book implements Serializable {
     @Column(name = "title")
     private String title;
     
-    @NotEmpty(message = "*Please enter author")
-    @NotNull(message = "*Please enter author")
-    @Column(name = "author")
-    private String author;
+    @NotEmpty(message = "*Please enter tag")
+    @NotNull(message = "*Please enter tag")
+    @Column(name = "tag")
+    private String tag;
     
-    @NotEmpty(message = "*Please enter ISBN")
-    @NotNull(message = "*Please enter ISBN")
-    @Column(name = "isbn")
-    private String isbn;
+    @NotEmpty(message = "*Please enter authors")
+    @NotNull(message = "*Please enter authors")
+    @Column(name = "authors")
+    private String authors;
     
     @Column(name = "publisher")
     private String publisher;
     
-    @Column(name = "tag")
-    private String tag;
+    @Column(name = "isbn")
+    private String isbn;
+    
+    @Column(name = "year_of_publication")
+    private Integer yearOfPublication;
+    
+    @Column(name = "num_of_copies")
+    private Integer numOfCopies;
     
     @ManyToOne
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "category_id", nullable = false)
     private Category category;
-    
-    @Column(name = "status")
-    private Integer status;
     
     @Column(name = "created_date")
     private Date createdDate;
+    
+    @Column(name = "status")
+    private Integer status;
     
     public Book() {}
 
@@ -74,12 +80,28 @@ public class Book implements Serializable {
         this.title = title;
     }
 
-    public String getAuthor() {
-        return author;
+    public String getTag() {
+        return tag;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+    public String getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(String authors) {
+        this.authors = authors;
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
     }
 
     public String getIsbn() {
@@ -90,20 +112,20 @@ public class Book implements Serializable {
         this.isbn = isbn;
     }
 
-    public String getPublisher() {
-        return publisher;
+    public Integer getYearOfPublication() {
+        return yearOfPublication;
     }
 
-    public void setPublisher(String publisher) {
-        this.publisher = publisher;
-    }
-    
-    public String getTag() {
-        return tag;
+    public void setYearOfPublication(Integer yearOfPublication) {
+        this.yearOfPublication = yearOfPublication;
     }
 
-    public void setTag(String tag) {
-        this.tag = tag;
+    public Integer getNumOfCopies() {
+        return numOfCopies;
+    }
+
+    public void setNumOfCopies(Integer numOfCopies) {
+        this.numOfCopies = numOfCopies;
     }
 
     public Category getCategory() {
@@ -114,19 +136,19 @@ public class Book implements Serializable {
         this.category = category;
     }
 
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
     public Date getCreatedDate() {
         return createdDate;
     }
 
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

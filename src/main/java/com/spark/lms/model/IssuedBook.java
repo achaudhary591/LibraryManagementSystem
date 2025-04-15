@@ -19,23 +19,23 @@ public class IssuedBook implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
     
     @ManyToOne
-    @JoinColumn(name = "issue_id")
+    @JoinColumn(name = "issue_id", nullable = false)
     private Issue issue;
     
     @ManyToOne
-    @JoinColumn(name = "book_id")
+    @JoinColumn(name = "book_id", nullable = false)
     private Book book;
     
     @Column(name = "returned")
     private Integer returned;
     
-    @Column(name = "return_date")
-    private Date returnDate;
+    @Column(name = "returned_date")
+    private Date returnedDate;
     
     public IssuedBook() {}
 
@@ -71,11 +71,11 @@ public class IssuedBook implements Serializable {
         this.returned = returned;
     }
 
-    public Date getReturnDate() {
-        return returnDate;
+    public Date getReturnedDate() {
+        return returnedDate;
     }
 
-    public void setReturnDate(Date returnDate) {
-        this.returnDate = returnDate;
+    public void setReturnedDate(Date returnedDate) {
+        this.returnedDate = returnedDate;
     }
 }

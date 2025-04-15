@@ -21,7 +21,7 @@ public class Category implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
     
@@ -36,8 +36,8 @@ public class Category implements Serializable {
     @Column(name = "notes")
     private String notes;
     
-    @Column(name = "create_date")
-    private Date createDate;
+    @Column(name = "created_date")
+    private Date createdDate;
     
     @OneToMany(mappedBy = "category")
     private List<Book> books;
@@ -75,13 +75,13 @@ public class Category implements Serializable {
     public void setNotes(String notes) {
         this.notes = notes;
     }
-    
-    public Date getCreateDate() {
-        return createDate;
+
+    public Date getCreatedDate() {
+        return createdDate;
     }
 
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 
     public List<Book> getBooks() {

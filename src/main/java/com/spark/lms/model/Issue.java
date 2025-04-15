@@ -23,13 +23,9 @@ public class Issue implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    
-    @ManyToOne
-    @JoinColumn(name = "member_id")
-    private Member member;
     
     @Column(name = "issue_date")
     private Date issueDate;
@@ -37,11 +33,27 @@ public class Issue implements Serializable {
     @Column(name = "expected_return_date")
     private Date expectedReturnDate;
     
-    @Column(name = "returned")
-    private Integer returned;
+    @Column(name = "return_date")
+    private Date returnDate;
+    
+    @Column(name = "type")
+    private String type;
+    
+    @ManyToOne
+    @JoinColumn(name = "member_id", nullable = false)
+    private Member member;
     
     @OneToMany(mappedBy = "issue", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<IssuedBook> issuedBooks;
+    
+    @Column(name = "notes")
+    private String notes;
+    
+    @Column(name = "created_date")
+    private Date createdDate;
+    
+    @Column(name = "status")
+    private Integer status;
     
     public Issue() {}
 
@@ -51,14 +63,6 @@ public class Issue implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Member getMember() {
-        return member;
-    }
-
-    public void setMember(Member member) {
-        this.member = member;
     }
 
     public Date getIssueDate() {
@@ -76,13 +80,29 @@ public class Issue implements Serializable {
     public void setExpectedReturnDate(Date expectedReturnDate) {
         this.expectedReturnDate = expectedReturnDate;
     }
-    
-    public Integer getReturned() {
-        return returned;
+
+    public Date getReturnDate() {
+        return returnDate;
     }
 
-    public void setReturned(Integer returned) {
-        this.returned = returned;
+    public void setReturnDate(Date returnDate) {
+        this.returnDate = returnDate;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Member getMember() {
+        return member;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
     }
 
     public List<IssuedBook> getIssuedBooks() {
@@ -91,5 +111,29 @@ public class Issue implements Serializable {
 
     public void setIssuedBooks(List<IssuedBook> issuedBooks) {
         this.issuedBooks = issuedBooks;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

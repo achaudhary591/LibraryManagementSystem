@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.spark.lms.common.Constants;
 import com.spark.lms.model.Member;
@@ -54,5 +55,17 @@ public class UserService {
     
     public User save(User user) {
         return userRepository.save(user);
+    }
+    
+    public List<User> findByMember(Member member) {
+        return userRepository.findByMember(member);
+    }
+    
+    @Transactional
+    public void deleteByMember(Member member) {
+        List<User> users = findByMember(member);
+        if (users != null && !users.isEmpty()) {
+            userRepository.deleteAll(users);
+        }
     }
 }

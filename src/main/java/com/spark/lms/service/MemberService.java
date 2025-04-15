@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.spark.lms.common.Constants;
 import com.spark.lms.model.Member;
@@ -15,6 +16,9 @@ public class MemberService {
 
     @Autowired
     private MemberRepository memberRepository;
+    
+    @Autowired
+    private UserService userService;
     
     public List<Member> getAll() {
         return memberRepository.findAll();
@@ -33,8 +37,16 @@ public class MemberService {
         return memberRepository.save(member);
     }
     
+    @Transactional
     public void delete(Long id) {
-        memberRepository.deleteById(id);
+        // First check if there are any users associated with this member
+        Member member = memberRepository.findById(id).orElse(null);
+        if (member != null) {
+            // Delete any associated users first
+            userService.deleteByMember(member);
+            // Then delete the member
+            memberRepository.deleteById(id);
+        }
     }
     
     public Long getTotalCount() {

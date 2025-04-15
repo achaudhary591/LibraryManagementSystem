@@ -82,8 +82,12 @@ public class MemberController {
     
     @GetMapping("/delete/{id}")
     public String deleteMember(@PathVariable Long id, RedirectAttributes redirectAttributes) {
-        memberService.delete(id);
-        redirectAttributes.addFlashAttribute("successMsg", "Member deleted successfully");
+        try {
+            memberService.delete(id);
+            redirectAttributes.addFlashAttribute("successMsg", "Member deleted successfully");
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("errorMsg", "Cannot delete member because it is associated with a user account. Please delete the user account first.");
+        }
         return "redirect:/member/list";
     }
 }

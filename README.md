@@ -16,8 +16,9 @@ A comprehensive Library Management System developed with Spring Boot that provid
 - [Setup Instructions](#setup-instructions)
 - [Project Structure](#project-structure)
 - [User Roles and Permissions](#user-roles-and-permissions)
-- [Screenshots](#screenshots)
 - [API Documentation](#api-documentation)
+- [Known Issues and Fixes](#known-issues-and-fixes)
+- [Future Enhancements](#future-enhancements)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -70,6 +71,7 @@ LibTrack is a full-featured Library Management System designed to streamline the
 - **Spring Data JPA**: Data access layer
 - **Hibernate**: ORM for database operations
 - **PostgreSQL**: Relational database
+- **OpenAPI/Swagger**: API documentation
 
 ### Frontend
 - **Thymeleaf**: Server-side Java template engine
@@ -132,11 +134,7 @@ LibTrack is a full-featured Library Management System designed to streamline the
 - **Admin**: Username: `admin`, Password: `admin`
 - **Librarian**: Username: `librarian`, Password: `librarian`
 
-The application automatically creates these default users when it starts up for the first time. This is handled through:
-1. The `schema.sql` file which contains SQL statements to create the users if they don't exist
-2. A `DataInitializer` class that runs on application startup to ensure the users are created
-
-You don't need to manually create these users or run any SQL scripts.
+The application automatically creates these default users when it starts up for the first time.
 
 ## Project Structure
 
@@ -146,12 +144,16 @@ libtrack/
 │   ├── main/
 │   │   ├── java/com/spark/lms/
 │   │   │   ├── common/          # Constants and utility classes
+│   │   │   ├── config/          # Configuration classes (OpenAPI, etc.)
 │   │   │   ├── configuration/   # Security and web configuration
 │   │   │   ├── controller/      # MVC controllers
+│   │   │   │   └── rest/        # REST API controllers
+│   │   │   ├── dto/             # Data Transfer Objects
+│   │   │   ├── exception/       # Exception handling
 │   │   │   ├── model/           # Entity classes
 │   │   │   ├── repository/      # Data access interfaces
 │   │   │   ├── service/         # Business logic layer
-│   │   │   └── LibTrackApplication.java  # Main application class
+│   │   │   └── util/            # Utility classes
 │   │   ├── resources/
 │   │   │   ├── static/          # Static resources (CSS, JS)
 │   │   │   ├── templates/       # Thymeleaf templates
@@ -178,53 +180,56 @@ libtrack/
 - View personal borrowing history
 - Update personal profile
 
-## Database Schema
-
-The application uses the following key entities:
-
-1. **User**: System users (Admin, Librarian, Student)
-2. **Member**: Library members (Students, Parents, Others)
-3. **Category**: Book categories/genres
-4. **Book**: Library books with metadata
-5. **Issue**: Records of book issuance
-6. **IssuedBook**: Many-to-many relationship between Issue and Book
-
 ## API Documentation
 
-The application provides REST endpoints for programmatic access:
+The application provides REST endpoints for programmatic access and includes OpenAPI/Swagger documentation:
 
+- Access the API documentation at: `http://localhost:8080/swagger-ui.html`
+
+Key API endpoints:
 - `/api/books`: Book management
 - `/api/categories`: Category management
 - `/api/members`: Member management
 - `/api/issues`: Issue management
 
-These endpoints support standard CRUD operations and can be used for integration with other systems.
+## Known Issues and Fixes
 
-## Troubleshooting
+### Java 23 Compatibility
+When running with Java 23, tests may fail due to Byte Buddy compatibility issues. Solutions:
 
-### Common Issues
+1. Add the JVM flag to Maven Surefire plugin (already implemented):
+   ```xml
+   <plugin>
+     <groupId>org.apache.maven.plugins</groupId>
+     <artifactId>maven-surefire-plugin</artifactId>
+     <configuration>
+       <argLine>-Dnet.bytebuddy.experimental=true</argLine>
+     </configuration>
+   </plugin>
+   ```
 
-1. **Database Connection Issues**
-   - Verify database credentials in application.properties
-   - Ensure PostgreSQL service is running
+2. Alternatively, use Java 17 or 21 which are fully compatible.
 
-2. **Application Won't Start**
-   - Check Java version (must be 17 or higher)
-   - Verify port 8080 is not in use by another application
+### Return Date Display Issue
+Fixed an issue where the student view would throw an error when viewing returned books due to:
+- Template referencing `returnDate` instead of `returnedDate`
+- Return date not being set when books were returned
 
-3. **Login Problems**
-   - Default credentials: admin/admin
-   - Check if users exist in the database
+### PostgreSQL Reserved Keywords
+Table name `user` was changed to `users` to avoid conflicts with PostgreSQL reserved keywords.
 
 ## Future Enhancements
 
-- Fine calculation and payment tracking
-- Email notifications for due dates
-- Barcode/QR code integration
-- Mobile application
-- Online reservation system
-- Integration with external catalogs
-- Enhanced reporting and analytics
+- **Fine Calculation**: Implement automatic fine calculation for overdue books
+- **Email Notifications**: Send notifications for due dates and overdue books
+- **Barcode/QR Integration**: Add support for barcode/QR code scanning
+- **Mobile Application**: Develop a companion mobile app
+- **Online Reservation**: Allow members to reserve books online
+- **External Catalog Integration**: Connect with external book catalogs
+- **Enhanced Reporting**: Add more detailed reporting and analytics
+- **Self-Service Returns**: Allow students to mark books as returned (pending librarian approval)
+- **Book Reviews**: Add functionality for members to review books
+- **Digital Content**: Support for e-books and digital resources
 
 ## Contributing
 

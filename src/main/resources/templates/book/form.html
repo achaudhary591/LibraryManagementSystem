@@ -25,98 +25,99 @@
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<div class="x_panel">
 							<div class="x_title">
-								<h2 th:if="${book.id==null}">Add New Book</h2>
-								<h2 th:if="${book.id!=null}">Edit Book Data</h2>
+								<h2 th:text="${book.id == null ? 'New Book' : 'Edit Book'}"></h2>
 								<div class="clearfix"></div>
 							</div>
 							<div class="x_content">
-							<div class="alert alert-success alert-dismissible fade in" role="alert" th:if="${successMsg}">
-                    			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-		                    	<span th:text="*{successMsg}"></span>
-		                  	</div>
+								<div class="alert alert-success alert-dismissible fade in" role="alert" th:if="${successMsg}">
+	                    			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+			                    	<span th:text="*{successMsg}"></span>
+			                  	</div>
 								<br />
-								<form th:action="@{/book/save}" method="post" th:object="${book}" class="form-horizontal form-label-left">
-								
-								
+								<form id="bookForm" data-parsley-validate class="form-horizontal form-label-left" 
+									th:action="@{/book/save}" th:object="${book}" method="post">
+									
+									<input type="hidden" th:field="*{id}" />
+									<input type="hidden" th:field="*{createdDate}" />
+									<input type="hidden" th:field="*{status}" />
+									
 									<div class="form-group">
-				                    	<label class="control-label col-md-3 col-sm-3 col-xs-12">Category <span class="required">*</span></label>
-				                        <div class="col-md-3 col-sm-3 col-xs-12">
-				                        	<select th:field="*{category}" class="form-control" id="category-selectbox">
-				                        		<option th:each="c : ${categories}" th:value="${c.id}" th:text="${c.name}" th:short-name="${c.shortName}"></option>
-				                        	</select>
-				                        </div>
-				                        <div class="col-md-3 col-sm-3 col-xs-12 mt-5">
-				                        	<span th:if="${#fields.hasErrors('category')}" th:errors="*{category}"></span>
-				                        </div>
-				                 	</div>
-								
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="tag">Tag <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input type="text" id="tag" th:field="*{tag}" required="required" class="form-control col-md-7 col-xs-12">
+											<ul class="parsley-errors-list filled">
+												<li class="parsley-required" th:each="err : ${#fields.errors('tag')}" th:text="${err}"></li>
+											</ul>
+										</div>
+									</div>
+									
 									<div class="form-group">
-                        				<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Tag <span class="required">*</span></label>
-                        				<div class="col-md-4 col-sm-4 col-xs-12">
-                          					<input type="text" th:field="*{tag}" class="form-control col-md-7 col-xs-12">
-				                        </div>
-				                        <div class="col-md-3 col-sm-3 col-xs-12 mt-5">
-				                        	<span th:if="${#fields.hasErrors('tag')}" th:errors="*{tag}"></span>
-				                        </div>
-				                 	</div>
-								
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="title">Title <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input type="text" id="title" th:field="*{title}" required="required" class="form-control col-md-7 col-xs-12">
+											<ul class="parsley-errors-list filled">
+												<li class="parsley-required" th:each="err : ${#fields.errors('title')}" th:text="${err}"></li>
+											</ul>
+										</div>
+									</div>
+									
 									<div class="form-group">
-                        				<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Book Title <span class="required">*</span></label>
-                        				<div class="col-md-6 col-sm-6 col-xs-12">
-                          					<input type="text" th:field="*{title}" class="form-control col-md-7 col-xs-12">
-				                        </div>
-				                        <div class="col-md-3 col-sm-3 col-xs-12 mt-5">
-				                        	<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
-				                        </div>
-				                 	</div>
-				                 	
-				                 	<div class="form-group">
-                        				<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Authors <span class="required">*</span></label>
-                        				<div class="col-md-4 col-sm-4 col-xs-12">
-                          					<input type="text" th:field="*{authors}" class="form-control col-md-7 col-xs-12">
-				                        </div>
-				                        <div class="col-md-3 col-sm-3 col-xs-12 mt-5">
-				                        	<span th:if="${#fields.hasErrors('authors')}" th:errors="*{authors}"></span>
-				                        </div>
-				                 	</div>
-				                 	
-				                 	<div class="form-group">
-                        				<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Publisher </label>
-                        				<div class="col-md-4 col-sm-4 col-xs-12">
-                          					<input type="text" th:field="*{publisher}" class="form-control col-md-7 col-xs-12">
-				                        </div>
-				                        <div class="col-md-3 col-sm-3 col-xs-12 mt-5">
-				                        	<span th:if="${#fields.hasErrors('publisher')}" th:errors="*{publisher}"></span>
-				                        </div>
-				                 	</div>
-				                 	
-				                 	<div class="form-group">
-                        				<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">ISBN </label>
-                        				<div class="col-md-4 col-sm-4 col-xs-12">
-                          					<input type="text" th:field="*{isbn}" class="form-control col-md-7 col-xs-12">
-				                        </div>
-				                        <div class="col-md-3 col-sm-3 col-xs-12 mt-5">
-				                        	<span th:if="${#fields.hasErrors('isbn')}" th:errors="*{isbn}"></span>
-				                        </div>
-				                 	</div>
-				                 	
-				                 	<input type="hidden" th:if="${id!=null}" th:field="*{id}" />
-				                 	<input type="hidden" th:field="*{status}" />
-				                 	<input type="hidden" name="createDate" id="createDate" th:value="${book.createDate}?${#dates.format(book.createDate, 'dd-MMM-yyyy')}:${#dates.format(#dates.createNow(), 'dd-MMM-yyyy')}" />
-				                 	
-				                 	<div class="ln_solid"></div>
-			                      	<div class="form-group">
-			                        	<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-									  		<th:block th:if="${id==null}">
-			                        			<button class="btn btn-primary" type="reset" id="resetBtn">Reset</button>
-			                        		</th:block>
-									  		<th:block th:if="${id!=null}">
-			                        			<button class="btn btn-primary" type="button" id="gotoListBtn" >Go to list page</button>
-			                        		</th:block>
-			                          		<button type="submit" class="btn btn-success">Save</button>
-			                        	</div>
-			                      	</div>
-				                 	
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="authors">Authors <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input type="text" id="authors" th:field="*{authors}" required="required" class="form-control col-md-7 col-xs-12">
+											<ul class="parsley-errors-list filled">
+												<li class="parsley-required" th:each="err : ${#fields.errors('authors')}" th:text="${err}"></li>
+											</ul>
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="publisher">Publisher <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input type="text" id="publisher" th:field="*{publisher}" required="required" class="form-control col-md-7 col-xs-12">
+											<ul class="parsley-errors-list filled">
+												<li class="parsley-required" th:each="err : ${#fields.errors('publisher')}" th:text="${err}"></li>
+											</ul>
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="isbn">ISBN <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input type="text" id="isbn" th:field="*{isbn}" required="required" class="form-control col-md-7 col-xs-12">
+											<ul class="parsley-errors-list filled">
+												<li class="parsley-required" th:each="err : ${#fields.errors('isbn')}" th:text="${err}"></li>
+											</ul>
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="category">Category <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<select class="form-control" id="category" th:field="*{category}" required="required">
+												<option value="">-- Select Category --</option>
+												<option th:each="cat : ${categories}" th:value="${cat.id}" th:text="${cat.name}"></option>
+											</select>
+											<ul class="parsley-errors-list filled">
+												<li class="parsley-required" th:each="err : ${#fields.errors('category')}" th:text="${err}"></li>
+											</ul>
+										</div>
+									</div>
+									
+									<div class="ln_solid"></div>
+									<div class="form-group">
+										<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+											<button class="btn btn-primary" type="button" onclick="window.history.back();">Cancel</button>
+											<button type="submit" class="btn btn-success">Submit</button>
+										</div>
+									</div>
+
 								</form>
 							</div>
 						</div>

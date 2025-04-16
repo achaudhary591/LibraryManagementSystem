@@ -3,6 +3,8 @@ package com.spark.lms.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -52,6 +54,7 @@ public class Book implements Serializable {
     @Column(name = "num_of_copies")
     private Integer numOfCopies;
     
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;

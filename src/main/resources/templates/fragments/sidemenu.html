@@ -34,7 +34,7 @@
 							<li><a th:href="@{/home}"><i class="fa fa-home"></i> Home </a></li>
 							
 							<!-- Admin and Librarian Menu Items -->
-							<li sec:authorize="hasAnyAuthority('Admin', 'Librarian')">
+							<li sec:authorize="hasAnyAuthority('ROLE_ADMIN', 'ROLE_LIBRARIAN')">
 								<a><i class="fa fa-users"></i> Members <span class="fa fa-chevron-down"></span></a>
 								<ul class="nav child_menu">
 									<li><a th:href="@{/member/list}">All Members</a></li>
@@ -42,7 +42,7 @@
 								</ul>
 							</li>
 							
-							<li sec:authorize="hasAnyAuthority('Admin', 'Librarian')">
+							<li sec:authorize="hasAnyAuthority('ROLE_ADMIN', 'ROLE_LIBRARIAN')">
 								<a><i class="fa fa-edit"></i> Categories <span class="fa fa-chevron-down"></span></a>
 								<ul class="nav child_menu">
 									<li><a th:href="@{/category/list}">All Categories</a></li>
@@ -50,7 +50,7 @@
 								</ul>
 							</li>
 							
-							<li sec:authorize="hasAnyAuthority('Admin', 'Librarian')">
+							<li sec:authorize="hasAnyAuthority('ROLE_ADMIN', 'ROLE_LIBRARIAN')">
 								<a><i class="fa fa-desktop"></i> Books <span class="fa fa-chevron-down"></span></a>
 								<ul class="nav child_menu">
 									<li><a th:href="@{/book/list}">All Books</a></li>
@@ -58,23 +58,23 @@
 								</ul>
 							</li>
 							
-							<li sec:authorize="hasAnyAuthority('Admin', 'Librarian')">
+							<li sec:authorize="hasAnyAuthority('ROLE_ADMIN', 'ROLE_LIBRARIAN')">
 								<a><i class="fa fa-table"></i> Issues <span class="fa fa-chevron-down"></span></a>
 								<ul class="nav child_menu">
 									<li><a th:href="@{/issue/list}">All Issues</a></li>
-									<li><a th:href="@{/issue/add}">Add Issue</a></li>
+									<li><a th:href="@{/issue/new}">Add Issue</a></li>
 								</ul>
 							</li>
 							
 							<!-- Student Menu Items -->
-							<li sec:authorize="hasAuthority('Student')">
+							<li sec:authorize="hasAuthority('ROLE_STUDENT')">
 								<a><i class="fa fa-book"></i> My Books <span class="fa fa-chevron-down"></span></a>
 								<ul class="nav child_menu">
 									<li><a th:href="@{/student/books}">Borrowed Books</a></li>
 								</ul>
 							</li>
 							
-							<li sec:authorize="hasAuthority('Student')">
+							<li sec:authorize="hasAuthority('ROLE_STUDENT')">
 								<a th:href="@{/student/profile}"><i class="fa fa-user"></i> My Profile </a>
 							</li>
 						</ul>

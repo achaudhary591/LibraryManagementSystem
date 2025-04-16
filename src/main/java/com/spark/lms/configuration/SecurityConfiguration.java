@@ -45,6 +45,8 @@ public class SecurityConfiguration {
         http.authorizeHttpRequests(authorize -> authorize
                 .requestMatchers("/login").permitAll()
                 .requestMatchers("/resources/**", "/static/**", "/custom/**", "/vendors/**", "/images/**").permitAll()
+                .requestMatchers("/css/**", "/jquery/**", "/bootstrap/**", "/js/**", "/fonts/**").permitAll()
+                .requestMatchers("/css/**", "/jquery/**", "/bootstrap/**").permitAll()
                 .requestMatchers("/admin/**").hasAuthority(Constants.ROLE_ADMIN)
                 .requestMatchers("/librarian/**").hasAuthority(Constants.ROLE_LIBRARIAN)
                 .requestMatchers("/student/**").hasAuthority(Constants.ROLE_STUDENT)

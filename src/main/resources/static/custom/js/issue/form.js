@@ -5,6 +5,7 @@ $(document).ready(function() {
 		$.get('/rest/member/list', function(data) {
 			if( data ) {
 				members = data;
+				console.log("Members loaded:", members.length);
 			}
 		});
 	}
@@ -17,6 +18,7 @@ $(document).ready(function() {
 				filteredMembers.push( members[k] );
 			}
 		}
+		console.log("Filtered members:", filteredMembers.length);
 		return filteredMembers;
 	}
 	
@@ -40,9 +42,24 @@ $(document).ready(function() {
 	
 	
 	function getBooksByCategory(value) {
-		$.get('/rest/book/' + value + '/available', function(data) {
-			if( data ) {
-				populateBooksList( data );
+		console.log("Getting books for category ID:", value);
+		$.ajax({
+			url: '/rest/book/' + value + '/available',
+			type: 'GET',
+			success: function(data) {
+				console.log("Books received:", data);
+				if(data) {
+					populateBooksList(data);
+				} else {
+					console.log("No books received");
+					populateBooksList([]);
+				}
+			},
+			error: function(xhr, status, error) {
+				console.error("Error fetching books:", error);
+				console.error("Status:", status);
+				console.error("Response:", xhr.responseText);
+				populateBooksList([]);
 			}
 		});
 	}
@@ -61,7 +78,7 @@ $(document).ready(function() {
 	$('#categorySel').on('change', function(){
 		var value = $(this).val();
 		if( value ) {
-			var books = getBooksByCategory( value );
+			getBooksByCategory( value );
 		} else {
 			populateBooksList( [] );
 		}

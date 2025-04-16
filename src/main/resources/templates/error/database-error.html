@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{_layout}">
+<head>
+    <title>Database Error</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="error-template">
+                        <h1>Oops!</h1>
+                        <h2>Database Error</h2>
+                        <div class="error-details">
+                            <p th:text="${message}">Sorry, a database error has occurred!</p>
+                            <p>Timestamp: <span th:text="${timestamp}">Timestamp</span></p>
+                        </div>
+                        <div class="error-actions">
+                            <a th:href="@{/home}" class="btn btn-primary">
+                                <i class="fa fa-home"></i> Take Me Home
+                            </a>
+                            <a th:href="@{/}" class="btn btn-default">
+                                <i class="fa fa-envelope"></i> Contact Support
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

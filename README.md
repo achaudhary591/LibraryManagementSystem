@@ -132,6 +132,12 @@ LibTrack is a full-featured Library Management System designed to streamline the
 - **Admin**: Username: `admin`, Password: `admin`
 - **Librarian**: Username: `librarian`, Password: `librarian`
 
+The application automatically creates these default users when it starts up for the first time. This is handled through:
+1. The `schema.sql` file which contains SQL statements to create the users if they don't exist
+2. A `DataInitializer` class that runs on application startup to ensure the users are created
+
+You don't need to manually create these users or run any SQL scripts.
+
 ## Project Structure
 
 ```

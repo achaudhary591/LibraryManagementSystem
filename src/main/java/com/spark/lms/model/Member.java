@@ -14,9 +14,12 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "member")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Member implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -66,6 +69,7 @@ public class Member implements Serializable {
 	
 	// New field to link Member with User for student login
 	@OneToOne(mappedBy = "member")
+	@JsonIgnore
 	private User user;
 	
 	public Member(@NotNull String type, @NotNull String firstName, @NotNull String middleName, @NotNull String lastName,

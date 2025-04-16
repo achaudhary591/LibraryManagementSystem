@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.spark.lms.common.Constants;
 import com.spark.lms.model.Member;
@@ -22,50 +21,41 @@ public class UserService {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
     
-    public User findByUsername(String username) {
-        return userRepository.findByUsername(username);
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
     
     public User getByUsername(String username) {
         return userRepository.findByUsername(username);
     }
     
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username);
     }
     
-    public User addNew(User user) {
-        user.setActive(1);
-        user.setCreatedDate(new Date());
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        return userRepository.save(user);
+    public void deleteByMember(Member member) {
+        User user = userRepository.findByMember(member);
+        if (user != null) {
+            userRepository.delete(user);
+        }
     }
     
     public User createStudentUser(Member member, String username, String password) {
         User user = new User();
-        user.setActive(1);
-        user.setCreatedDate(new Date());
-        user.setDisplayName(member.getFullName());
         user.setUsername(username);
         user.setPassword(passwordEncoder.encode(password));
-        user.setRole(Constants.ROLE_STUDENT);
+        user.setRole("STUDENT");
+        user.setActive(true);
         user.setMember(member);
+        user.setDisplayName(member.getFirstName() + " " + member.getLastName());
+        user.setCreatedDate(new Date());
         return userRepository.save(user);
     }
     
-    public User save(User user) {
+    public User addNew(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setActive(true);
+        user.setCreatedDate(new Date());
         return userRepository.save(user);
-    }
-    
-    public List<User> findByMember(Member member) {
-        return userRepository.findByMember(member);
-    }
-    
-    @Transactional
-    public void deleteByMember(Member member) {
-        List<User> users = findByMember(member);
-        if (users != null && !users.isEmpty()) {
-            userRepository.deleteAll(users);
-        }
     }
 }

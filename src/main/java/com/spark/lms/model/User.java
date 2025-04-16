@@ -11,132 +11,117 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "users")
 public class User implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	public User() {}
-	
-	public User(@NotNull String displayName, @NotNull String username, @NotNull String password, @NotNull String role) {
-		super();
-		this.displayName = displayName;
-		this.username = username;
-		this.password = password;
-		this.role = role;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+    
+    @Column(name = "display_name")
+    private String displayName;
+    
+    @Column(name = "username", unique = true)
+    private String username;
+    
+    @Column(name = "password")
+    private String password;
+    
+    @Column(name = "role")
+    private String role;
+    
+    @Column(name = "active")
+    private boolean active;
+    
+    @Column(name = "created_date")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdDate;
+    
+    @OneToOne
+    @JoinColumn(name = "member_id")
+    @JsonIgnore
+    private Member member;
+    
+    public User() {}
+    
+    public User(String displayName, String username, String password, String role) {
+        this.displayName = displayName;
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        this.createdDate = new Date();
+    }
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private Long id;
-	
-	@NotNull
-	@Column(name = "display_name")
-	private String displayName;
-	
-	@NotNull
-	@Column(name = "username")
-	private String username;
-	
-	@NotNull
-	@Column(name = "password")
-	private String password;
-	
-	@NotNull
-	@Column(name = "active")
-	private Integer active;
-	
-	@NotNull
-	@Column(name = "role")
-	private String role;
-	
-	@NotNull
-	@Column(name = "created_date")
-	private Date createdDate;
-	
-	@Column(name = "last_modified_date")
-	private Date lastModifiedDate;
-	
-	// New field to link User with Member for student login
-	@OneToOne
-	@JoinColumn(name = "member_id")
-	private Member member;
+    public Long getId() {
+        return id;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
+    public String getDisplayName() {
+        return displayName;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
 
-	public String getDisplayName() {
-		return displayName;
-	}
+    public String getUsername() {
+        return username;
+    }
 
-	public void setDisplayName(String displayName) {
-		this.displayName = displayName;
-	}
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-	public String getUsername() {
-		return username;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public String getRole() {
+        return role;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public void setRole(String role) {
+        this.role = role;
+    }
 
-	public Integer getActive() {
-		return active;
-	}
+    public boolean isActive() {
+        return active;
+    }
 
-	public void setActive(Integer active) {
-		this.active = active;
-	}
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 
-	public String getRole() {
-		return role;
-	}
+    public Date getCreatedDate() {
+        return createdDate;
+    }
 
-	public void setRole(String role) {
-		this.role = role;
-	}
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
 
-	public Date getCreatedDate() {
-		return createdDate;
-	}
+    public Member getMember() {
+        return member;
+    }
 
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
-	}
-
-	public Date getLastModifiedDate() {
-		return lastModifiedDate;
-	}
-
-	public void setLastModifiedDate(Date lastModifiedDate) {
-		this.lastModifiedDate = lastModifiedDate;
-	}
-	
-	public Member getMember() {
-		return member;
-	}
-
-	public void setMember(Member member) {
-		this.member = member;
-	}
+    public void setMember(Member member) {
+        this.member = member;
+    }
 }

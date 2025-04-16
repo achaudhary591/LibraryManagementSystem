@@ -31,6 +31,10 @@ public class CategoryService {
 		return categoryRepository.findById(id).get();
 	}
 	
+	public Category getByName(String name) {
+		return categoryRepository.findByName(name);
+	}
+	
 	public Category addNew(Category category) {
 		category.setCreatedDate(new Date());
 		return categoryRepository.save(category);

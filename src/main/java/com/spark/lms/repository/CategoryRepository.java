@@ -10,4 +10,5 @@ import com.spark.lms.model.Category;
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Long> {
 	public List<Category> findAllByOrderByNameAsc();
+	public Category findByName(String name);
 }

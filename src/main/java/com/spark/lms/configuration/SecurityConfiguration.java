@@ -46,7 +46,7 @@ public class SecurityConfiguration {
                 .requestMatchers("/login").permitAll()
                 .requestMatchers("/resources/**", "/static/**", "/custom/**", "/vendors/**", "/images/**").permitAll()
                 .requestMatchers("/css/**", "/jquery/**", "/bootstrap/**", "/js/**", "/fonts/**").permitAll()
-                .requestMatchers("/css/**", "/jquery/**", "/bootstrap/**").permitAll()
+                .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
                 .requestMatchers("/admin/**").hasAuthority(Constants.ROLE_ADMIN)
                 .requestMatchers("/librarian/**").hasAuthority(Constants.ROLE_LIBRARIAN)
                 .requestMatchers("/student/**").hasAuthority(Constants.ROLE_STUDENT)
@@ -56,7 +56,7 @@ public class SecurityConfiguration {
                 .requestMatchers("/student/books").hasAuthority(Constants.ROLE_STUDENT)
                 .anyRequest().authenticated()
             )
-            .csrf(csrf -> csrf.disable())
+            .csrf(csrf -> csrf.ignoringRequestMatchers("/rest/**"))
             .formLogin(form -> form
                 .loginPage("/login")
                 .failureUrl("/login?error=true")
@@ -70,6 +70,10 @@ public class SecurityConfiguration {
             )
             .exceptionHandling(exception -> exception
                 .accessDeniedPage("/access-denied")
+            )
+            .headers(headers -> headers
+                .contentSecurityPolicy(csp -> csp.policyDirectives("default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;"))
+                .frameOptions(frame -> frame.sameOrigin())
             );
             
         return http.build();

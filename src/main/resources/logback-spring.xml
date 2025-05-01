@@ -9,14 +9,14 @@
         </encoder>
     </appender>
 
-    <!-- File appender configuration -->
-    <appender name="RollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOGS}/libtrack.log</file>
+    <!-- File appender for general application logs -->
+    <appender name="ApplicationFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS}/application.log</file>
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOGS}/archived/libtrack-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <fileNamePattern>${LOGS}/archived/application-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>10MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
@@ -24,14 +24,32 @@
         </rollingPolicy>
     </appender>
 
-    <!-- Security audit log -->
-    <appender name="SecurityAudit" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOGS}/security.log</file>
+    <!-- File appender for security audit logs -->
+    <appender name="SecurityAuditFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS}/security-audit.log</file>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} - %msg%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOGS}/archived/security-audit-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>90</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <!-- File appender for error logs -->
+    <appender name="ErrorFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS}/error.log</file>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOGS}/archived/security-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <fileNamePattern>${LOGS}/archived/error-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>10MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
@@ -39,21 +57,54 @@
         </rollingPolicy>
     </appender>
 
-    <!-- Logger for security events -->
-    <logger name="org.springframework.security" level="INFO" additivity="false">
-        <appender-ref ref="SecurityAudit" />
+    <!-- File appender for database operations -->
+    <appender name="DatabaseFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS}/database.log</file>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} - %msg%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOGS}/archived/database-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <!-- Logger for security audit events -->
+    <logger name="security-audit" level="INFO" additivity="false">
+        <appender-ref ref="SecurityAuditFile" />
         <appender-ref ref="Console" />
     </logger>
 
-    <!-- Logger for application code -->
-    <logger name="com.spark.lms" level="DEBUG" additivity="false">
-        <appender-ref ref="RollingFile" />
+    <!-- Logger for Spring Security -->
+    <logger name="org.springframework.security" level="INFO" additivity="false">
+        <appender-ref ref="SecurityAuditFile" />
+        <appender-ref ref="ApplicationFile" />
         <appender-ref ref="Console" />
+    </logger>
+
+    <!-- Logger for database operations -->
+    <logger name="org.hibernate.SQL" level="DEBUG" additivity="false">
+        <appender-ref ref="DatabaseFile" />
+    </logger>
+
+    <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE" additivity="false">
+        <appender-ref ref="DatabaseFile" />
+    </logger>
+
+    <!-- Logger for application-specific classes -->
+    <logger name="com.spark.lms" level="DEBUG" additivity="false">
+        <appender-ref ref="ApplicationFile" />
+        <appender-ref ref="Console" />
+        <appender-ref ref="ErrorFile" />
     </logger>
 
     <!-- Root logger -->
     <root level="INFO">
-        <appender-ref ref="RollingFile" />
+        <appender-ref ref="ApplicationFile" />
         <appender-ref ref="Console" />
+        <appender-ref ref="ErrorFile" />
     </root>
 </configuration>

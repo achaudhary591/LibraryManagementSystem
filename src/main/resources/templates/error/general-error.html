@@ -1,34 +1,36 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{_layout}">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Error</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error - LibTrack</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <div layout:fragment="content">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="error-template">
-                        <h1>Oops!</h1>
-                        <h2>Something went wrong</h2>
-                        <div class="error-details">
-                            <p th:text="${message}">Sorry, an error has occurred!</p>
-                            <p>Timestamp: <span th:text="${timestamp}">Timestamp</span></p>
-                        </div>
-                        <div class="error-actions">
-                            <a th:href="@{/home}" class="btn btn-primary">
-                                <i class="fa fa-home"></i> Take Me Home
-                            </a>
-                            <a th:href="@{/}" class="btn btn-default">
-                                <i class="fa fa-envelope"></i> Contact Support
-                            </a>
-                        </div>
-                    </div>
-                </div>
+    <div class="container mt-5">
+        <div class="card border-danger">
+            <div class="card-header bg-danger text-white">
+                <h3>Error</h3>
+            </div>
+            <div class="card-body">
+                <h4 class="card-title">An unexpected error occurred</h4>
+                <p class="card-text" th:text="${message}">Error message will be displayed here.</p>
+                <p class="card-text">
+                    <small class="text-muted">
+                        Time: <span th:text="${timestamp}">Timestamp</span>
+                    </small>
+                </p>
+                <p class="card-text">
+                    <small class="text-muted">
+                        URL: <span th:text="${url}">URL</span>
+                    </small>
+                </p>
+                <a href="/" class="btn btn-primary">Return to Home</a>
             </div>
         </div>
     </div>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 </body>
 </html>

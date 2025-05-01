@@ -2,62 +2,48 @@ package com.spark.lms.exception;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
- * Standard error response object for REST API errors.
- * This provides a consistent error response format across the API.
+ * Standardized API error response
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ApiError {
 
+    private HttpStatus status;
+    
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime timestamp;
-    private HttpStatus status;
+    
     private String message;
     private String debugMessage;
     private List<ApiSubError> subErrors;
+    private Map<String, String> validationErrors;
 
-    /**
-     * Default constructor
-     */
     private ApiError() {
         timestamp = LocalDateTime.now();
     }
 
-    /**
-     * Constructor with HTTP status
-     * 
-     * @param status the HTTP status
-     */
     public ApiError(HttpStatus status) {
         this();
         this.status = status;
     }
 
-    /**
-     * Constructor with HTTP status and exception
-     * 
-     * @param status the HTTP status
-     * @param ex the exception
-     */
-    public ApiError(HttpStatus status, Throwable ex) {
+    public ApiError(HttpStatus status, String message) {
         this();
         this.status = status;
-        this.message = "Unexpected error";
-        this.debugMessage = ex.getLocalizedMessage();
+        this.message = message;
     }
 
-    /**
-     * Constructor with HTTP status, message and exception
-     * 
-     * @param status the HTTP status
-     * @param message the error message
-     * @param ex the exception
-     */
     public ApiError(HttpStatus status, String message, Throwable ex) {
         this();
         this.status = status;
@@ -66,21 +52,55 @@ public class ApiError {
     }
 
     /**
-     * Add a validation error to the sub-errors list
-     * 
-     * @param object the object that failed validation
-     * @param field the field that failed validation
-     * @param rejectedValue the invalid value
-     * @param message the validation error message
+     * Add a validation error for a specific field
      */
     public void addValidationError(String object, String field, Object rejectedValue, String message) {
         addSubError(new ApiValidationError(object, field, rejectedValue, message));
     }
 
     /**
+     * Add a validation error for an object (not field specific)
+     */
+    public void addValidationError(String object, String message) {
+        addSubError(new ApiValidationError(object, message));
+    }
+
+    /**
+     * Add multiple validation errors from a list of field errors
+     */
+    public void addFieldValidationErrors(List<FieldError> fieldErrors) {
+        fieldErrors.forEach(this::addValidationError);
+    }
+
+    /**
+     * Add a validation error from a field error
+     */
+    private void addValidationError(FieldError fieldError) {
+        this.addValidationError(
+                fieldError.getObjectName(),
+                fieldError.getField(),
+                fieldError.getRejectedValue(),
+                fieldError.getDefaultMessage());
+    }
+
+    /**
+     * Add multiple validation errors from a list of global errors
+     */
+    public void addObjectValidationErrors(List<ObjectError> globalErrors) {
+        globalErrors.forEach(this::addValidationError);
+    }
+
+    /**
+     * Add a validation error from a global error
+     */
+    private void addValidationError(ObjectError objectError) {
+        this.addValidationError(
+                objectError.getObjectName(),
+                objectError.getDefaultMessage());
+    }
+
+    /**
      * Add a sub-error to the list
-     * 
-     * @param subError the sub-error to add
      */
     private void addSubError(ApiSubError subError) {
         if (subErrors == null) {
@@ -88,8 +108,28 @@ public class ApiError {
         }
         subErrors.add(subError);
     }
+    
+    /**
+     * Set validation errors from a map
+     */
+    public void setValidationErrors(Map<String, String> errors) {
+        this.validationErrors = errors;
+        
+        // Also add as sub-errors for backward compatibility
+        if (errors != null) {
+            errors.forEach((field, errorMessage) -> 
+                addValidationError("", field, null, errorMessage));
+        }
+    }
 
     // Getters and setters
+    public HttpStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(HttpStatus status) {
+        this.status = status;
+    }
 
     public LocalDateTime getTimestamp() {
         return timestamp;
@@ -97,14 +137,6 @@ public class ApiError {
 
     public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
-    }
-
-    public HttpStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(HttpStatus status) {
-        this.status = status;
     }
 
     public String getMessage() {
@@ -130,61 +162,69 @@ public class ApiError {
     public void setSubErrors(List<ApiSubError> subErrors) {
         this.subErrors = subErrors;
     }
+    
+    public Map<String, String> getValidationErrors() {
+        return validationErrors;
+    }
+}
 
-    /**
-     * Abstract class for API sub-errors
-     */
-    abstract static class ApiSubError {
+/**
+ * Abstract class for API sub-errors
+ */
+abstract class ApiSubError {
+}
+
+/**
+ * API validation error
+ */
+class ApiValidationError extends ApiSubError {
+    private String object;
+    private String field;
+    private Object rejectedValue;
+    private String message;
+
+    ApiValidationError(String object, String message) {
+        this.object = object;
+        this.message = message;
     }
 
-    /**
-     * Class for validation errors
-     */
-    static class ApiValidationError extends ApiSubError {
-        private String object;
-        private String field;
-        private Object rejectedValue;
-        private String message;
+    ApiValidationError(String object, String field, Object rejectedValue, String message) {
+        this.object = object;
+        this.field = field;
+        this.rejectedValue = rejectedValue;
+        this.message = message;
+    }
 
-        ApiValidationError(String object, String field, Object rejectedValue, String message) {
-            this.object = object;
-            this.field = field;
-            this.rejectedValue = rejectedValue;
-            this.message = message;
-        }
+    // Getters and setters
+    public String getObject() {
+        return object;
+    }
 
-        // Getters and setters
+    public void setObject(String object) {
+        this.object = object;
+    }
 
-        public String getObject() {
-            return object;
-        }
+    public String getField() {
+        return field;
+    }
 
-        public void setObject(String object) {
-            this.object = object;
-        }
+    public void setField(String field) {
+        this.field = field;
+    }
 
-        public String getField() {
-            return field;
-        }
+    public Object getRejectedValue() {
+        return rejectedValue;
+    }
 
-        public void setField(String field) {
-            this.field = field;
-        }
+    public void setRejectedValue(Object rejectedValue) {
+        this.rejectedValue = rejectedValue;
+    }
 
-        public Object getRejectedValue() {
-            return rejectedValue;
-        }
+    public String getMessage() {
+        return message;
+    }
 
-        public void setRejectedValue(Object rejectedValue) {
-            this.rejectedValue = rejectedValue;
-        }
-
-        public String getMessage() {
-            return message;
-        }
-
-        public void setMessage(String message) {
-            this.message = message;
-        }
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

@@ -1,0 +1,1766 @@
+2025-05-01 19:41:45 - 
+    select
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        u1_0.member_id,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2025-05-01 19:41:45 - 
+    select
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        u1_0.member_id,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2025-05-01 19:41:45 - 
+    select
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        u1_0.member_id,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0
+2025-05-01 19:41:45 - 
+    select
+        m1_0.id,
+        m1_0.contact,
+        m1_0.date_of_birth,
+        m1_0.email,
+        m1_0.first_name,
+        m1_0.gender,
+        m1_0.joining_date,
+        m1_0.last_name,
+        m1_0.middle_name,
+        m1_0.type,
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        member m1_0 
+    left join
+        users u1_0 
+            on m1_0.id=u1_0.member_id 
+    where
+        m1_0.id=?
+2025-05-01 19:41:45 - 
+    select
+        m1_0.id,
+        m1_0.contact,
+        m1_0.date_of_birth,
+        m1_0.email,
+        m1_0.first_name,
+        m1_0.gender,
+        m1_0.joining_date,
+        m1_0.last_name,
+        m1_0.middle_name,
+        m1_0.type,
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        member m1_0 
+    left join
+        users u1_0 
+            on m1_0.id=u1_0.member_id 
+    where
+        m1_0.id=?
+2025-05-01 19:42:23 - 
+    select
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        u1_0.member_id,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2025-05-01 19:42:23 - 
+    select
+        count(*) 
+    from
+        member m1_0
+2025-05-01 19:42:23 - 
+    select
+        count(m1_0.id) 
+    from
+        member m1_0 
+    where
+        m1_0.type=?
+2025-05-01 19:42:23 - 
+    select
+        count(m1_0.id) 
+    from
+        member m1_0 
+    where
+        m1_0.type=?
+2025-05-01 19:42:23 - 
+    select
+        count(*) 
+    from
+        category c1_0
+2025-05-01 19:42:23 - 
+    select
+        count(*) 
+    from
+        book b1_0
+2025-05-01 19:42:23 - 
+    select
+        count(b1_0.id) 
+    from
+        book b1_0 
+    where
+        b1_0.status=?
+2025-05-01 19:42:28 - 
+    select
+        m1_0.id,
+        m1_0.contact,
+        m1_0.date_of_birth,
+        m1_0.email,
+        m1_0.first_name,
+        m1_0.gender,
+        m1_0.joining_date,
+        m1_0.last_name,
+        m1_0.middle_name,
+        m1_0.type 
+    from
+        member m1_0
+2025-05-01 19:42:28 - 
+    select
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        m1_0.id,
+        m1_0.contact,
+        m1_0.date_of_birth,
+        m1_0.email,
+        m1_0.first_name,
+        m1_0.gender,
+        m1_0.joining_date,
+        m1_0.last_name,
+        m1_0.middle_name,
+        m1_0.type,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        member m1_0 
+            on m1_0.id=u1_0.member_id 
+    where
+        u1_0.member_id=?
+2025-05-01 19:42:28 - 
+    select
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        m1_0.id,
+        m1_0.contact,
+        m1_0.date_of_birth,
+        m1_0.email,
+        m1_0.first_name,
+        m1_0.gender,
+        m1_0.joining_date,
+        m1_0.last_name,
+        m1_0.middle_name,
+        m1_0.type,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        member m1_0 
+            on m1_0.id=u1_0.member_id 
+    where
+        u1_0.member_id=?
+2025-05-01 19:42:34 - 
+    select
+        c1_0.id,
+        c1_0.created_date,
+        c1_0.name,
+        c1_0.notes,
+        c1_0.short_name 
+    from
+        category c1_0 
+    order by
+        c1_0.name
+2025-05-01 19:42:34 - 
+    select
+        b1_0.id,
+        b1_0.authors,
+        b1_0.category_id,
+        b1_0.created_date,
+        b1_0.isbn,
+        b1_0.num_of_copies,
+        b1_0.publisher,
+        b1_0.status,
+        b1_0.tag,
+        b1_0.title,
+        b1_0.year_of_publication 
+    from
+        book b1_0
+2025-05-01 19:48:30 - 
+    select
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        u1_0.member_id,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2025-05-01 19:48:30 - 
+    select
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        u1_0.member_id,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2025-05-01 19:48:30 - 
+    select
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        u1_0.member_id,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0
+2025-05-01 19:48:30 - 
+    select
+        m1_0.id,
+        m1_0.contact,
+        m1_0.date_of_birth,
+        m1_0.email,
+        m1_0.first_name,
+        m1_0.gender,
+        m1_0.joining_date,
+        m1_0.last_name,
+        m1_0.middle_name,
+        m1_0.type,
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        member m1_0 
+    left join
+        users u1_0 
+            on m1_0.id=u1_0.member_id 
+    where
+        m1_0.id=?
+2025-05-01 19:48:30 - 
+    select
+        m1_0.id,
+        m1_0.contact,
+        m1_0.date_of_birth,
+        m1_0.email,
+        m1_0.first_name,
+        m1_0.gender,
+        m1_0.joining_date,
+        m1_0.last_name,
+        m1_0.middle_name,
+        m1_0.type,
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        member m1_0 
+    left join
+        users u1_0 
+            on m1_0.id=u1_0.member_id 
+    where
+        m1_0.id=?
+2025-05-01 19:49:24 - 
+    select
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        u1_0.member_id,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2025-05-01 19:49:24 - 
+    select
+        count(*) 
+    from
+        member m1_0
+2025-05-01 19:49:24 - 
+    select
+        count(m1_0.id) 
+    from
+        member m1_0 
+    where
+        m1_0.type=?
+2025-05-01 19:49:24 - 
+    select
+        count(m1_0.id) 
+    from
+        member m1_0 
+    where
+        m1_0.type=?
+2025-05-01 19:49:24 - 
+    select
+        count(*) 
+    from
+        category c1_0
+2025-05-01 19:49:24 - 
+    select
+        count(*) 
+    from
+        book b1_0
+2025-05-01 19:49:24 - 
+    select
+        count(b1_0.id) 
+    from
+        book b1_0 
+    where
+        b1_0.status=?
+2025-05-01 20:11:32 - 
+    select
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        u1_0.member_id,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2025-05-01 20:11:32 - 
+    select
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        u1_0.member_id,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2025-05-01 20:11:32 - 
+    select
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        u1_0.member_id,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0
+2025-05-01 20:11:32 - 
+    select
+        m1_0.id,
+        m1_0.contact,
+        m1_0.date_of_birth,
+        m1_0.email,
+        m1_0.first_name,
+        m1_0.gender,
+        m1_0.joining_date,
+        m1_0.last_name,
+        m1_0.middle_name,
+        m1_0.type,
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        member m1_0 
+    left join
+        users u1_0 
+            on m1_0.id=u1_0.member_id 
+    where
+        m1_0.id=?
+2025-05-01 20:11:32 - 
+    select
+        m1_0.id,
+        m1_0.contact,
+        m1_0.date_of_birth,
+        m1_0.email,
+        m1_0.first_name,
+        m1_0.gender,
+        m1_0.joining_date,
+        m1_0.last_name,
+        m1_0.middle_name,
+        m1_0.type,
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        member m1_0 
+    left join
+        users u1_0 
+            on m1_0.id=u1_0.member_id 
+    where
+        m1_0.id=?
+2025-05-01 20:11:42 - 
+    select
+        count(*) 
+    from
+        member m1_0
+2025-05-01 20:11:42 - 
+    select
+        count(m1_0.id) 
+    from
+        member m1_0 
+    where
+        m1_0.type=?
+2025-05-01 20:11:42 - 
+    select
+        count(m1_0.id) 
+    from
+        member m1_0 
+    where
+        m1_0.type=?
+2025-05-01 20:11:42 - 
+    select
+        count(*) 
+    from
+        category c1_0
+2025-05-01 20:11:42 - 
+    select
+        count(*) 
+    from
+        book b1_0
+2025-05-01 20:11:42 - 
+    select
+        count(b1_0.id) 
+    from
+        book b1_0 
+    where
+        b1_0.status=?
+2025-05-01 20:16:57 - 
+    select
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        u1_0.member_id,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2025-05-01 20:16:57 - 
+    select
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        u1_0.member_id,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2025-05-01 20:16:57 - 
+    select
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        u1_0.member_id,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0
+2025-05-01 20:16:57 - 
+    select
+        m1_0.id,
+        m1_0.contact,
+        m1_0.date_of_birth,
+        m1_0.email,
+        m1_0.first_name,
+        m1_0.gender,
+        m1_0.joining_date,
+        m1_0.last_name,
+        m1_0.middle_name,
+        m1_0.type,
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        member m1_0 
+    left join
+        users u1_0 
+            on m1_0.id=u1_0.member_id 
+    where
+        m1_0.id=?
+2025-05-01 20:16:57 - 
+    select
+        m1_0.id,
+        m1_0.contact,
+        m1_0.date_of_birth,
+        m1_0.email,
+        m1_0.first_name,
+        m1_0.gender,
+        m1_0.joining_date,
+        m1_0.last_name,
+        m1_0.middle_name,
+        m1_0.type,
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        member m1_0 
+    left join
+        users u1_0 
+            on m1_0.id=u1_0.member_id 
+    where
+        m1_0.id=?
+2025-05-01 20:19:26 - 
+    select
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        u1_0.member_id,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2025-05-01 20:19:26 - 
+    select
+        count(*) 
+    from
+        member m1_0
+2025-05-01 20:19:26 - 
+    select
+        count(m1_0.id) 
+    from
+        member m1_0 
+    where
+        m1_0.type=?
+2025-05-01 20:19:26 - 
+    select
+        count(m1_0.id) 
+    from
+        member m1_0 
+    where
+        m1_0.type=?
+2025-05-01 20:19:26 - 
+    select
+        count(*) 
+    from
+        category c1_0
+2025-05-01 20:19:26 - 
+    select
+        count(*) 
+    from
+        book b1_0
+2025-05-01 20:19:26 - 
+    select
+        count(b1_0.id) 
+    from
+        book b1_0 
+    where
+        b1_0.status=?
+2025-05-01 20:19:36 - 
+    select
+        c1_0.id,
+        c1_0.created_date,
+        c1_0.name,
+        c1_0.notes,
+        c1_0.short_name 
+    from
+        category c1_0
+2025-05-01 20:19:53 - 
+    select
+        c1_0.id,
+        c1_0.created_date,
+        c1_0.name,
+        c1_0.notes,
+        c1_0.short_name 
+    from
+        category c1_0 
+    where
+        c1_0.name=?
+2025-05-01 20:19:53 - 
+    insert 
+    into
+        category
+        (created_date, name, notes, short_name) 
+    values
+        (?, ?, ?, ?)
+2025-05-01 20:19:57 - 
+    select
+        c1_0.id,
+        c1_0.created_date,
+        c1_0.name,
+        c1_0.notes,
+        c1_0.short_name 
+    from
+        category c1_0
+2025-05-01 20:20:02 - 
+    select
+        c1_0.id,
+        c1_0.created_date,
+        c1_0.name,
+        c1_0.notes,
+        c1_0.short_name 
+    from
+        category c1_0 
+    order by
+        c1_0.name
+2025-05-01 20:20:43 - 
+    select
+        c1_0.id,
+        c1_0.created_date,
+        c1_0.name,
+        c1_0.notes,
+        c1_0.short_name 
+    from
+        category c1_0 
+    order by
+        c1_0.name
+2025-05-01 20:20:43 - 
+    select
+        b1_0.id,
+        b1_0.authors,
+        b1_0.category_id,
+        b1_0.created_date,
+        b1_0.isbn,
+        b1_0.num_of_copies,
+        b1_0.publisher,
+        b1_0.status,
+        b1_0.tag,
+        b1_0.title,
+        b1_0.year_of_publication 
+    from
+        book b1_0 
+    where
+        b1_0.tag=?
+2025-05-01 20:20:43 - 
+    insert 
+    into
+        book
+        (authors, category_id, created_date, isbn, num_of_copies, publisher, status, tag, title, year_of_publication) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2025-05-01 20:20:43 - 
+    select
+        c1_0.id,
+        c1_0.created_date,
+        c1_0.name,
+        c1_0.notes,
+        c1_0.short_name 
+    from
+        category c1_0 
+    order by
+        c1_0.name
+2025-05-01 20:20:48 - 
+    select
+        c1_0.id,
+        c1_0.created_date,
+        c1_0.name,
+        c1_0.notes,
+        c1_0.short_name 
+    from
+        category c1_0 
+    order by
+        c1_0.name
+2025-05-01 20:20:48 - 
+    select
+        b1_0.id,
+        b1_0.authors,
+        b1_0.category_id,
+        b1_0.created_date,
+        b1_0.isbn,
+        b1_0.num_of_copies,
+        b1_0.publisher,
+        b1_0.status,
+        b1_0.tag,
+        b1_0.title,
+        b1_0.year_of_publication 
+    from
+        book b1_0
+2025-05-01 20:20:51 - 
+    select
+        c1_0.id,
+        c1_0.created_date,
+        c1_0.name,
+        c1_0.notes,
+        c1_0.short_name 
+    from
+        category c1_0 
+    order by
+        c1_0.name
+2025-05-01 20:20:51 - 
+    select
+        i1_0.id,
+        i1_0.created_date,
+        i1_0.expected_return_date,
+        i1_0.issue_date,
+        i1_0.member_id,
+        i1_0.notes,
+        i1_0.return_date,
+        i1_0.status,
+        i1_0.type 
+    from
+        issue i1_0
+2025-05-01 20:20:51 - 
+    select
+        m1_0.id,
+        m1_0.contact,
+        m1_0.date_of_birth,
+        m1_0.email,
+        m1_0.first_name,
+        m1_0.gender,
+        m1_0.joining_date,
+        m1_0.last_name,
+        m1_0.middle_name,
+        m1_0.type,
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        member m1_0 
+    left join
+        users u1_0 
+            on m1_0.id=u1_0.member_id 
+    where
+        m1_0.id=?
+2025-05-01 20:20:51 - 
+    select
+        ib1_0.issue_id,
+        ib1_0.id,
+        ib1_0.book_id,
+        b1_0.id,
+        b1_0.authors,
+        b1_0.category_id,
+        c1_0.id,
+        c1_0.created_date,
+        c1_0.name,
+        c1_0.notes,
+        c1_0.short_name,
+        b1_0.created_date,
+        b1_0.isbn,
+        b1_0.num_of_copies,
+        b1_0.publisher,
+        b1_0.status,
+        b1_0.tag,
+        b1_0.title,
+        b1_0.year_of_publication,
+        ib1_0.returned,
+        ib1_0.returned_date 
+    from
+        issued_book ib1_0 
+    left join
+        book b1_0 
+            on b1_0.id=ib1_0.book_id 
+    left join
+        category c1_0 
+            on c1_0.id=b1_0.category_id 
+    where
+        ib1_0.issue_id=?
+2025-05-01 20:20:53 - 
+    select
+        c1_0.id,
+        c1_0.created_date,
+        c1_0.name,
+        c1_0.notes,
+        c1_0.short_name 
+    from
+        category c1_0 
+    order by
+        c1_0.name
+2025-05-01 20:20:53 - 
+    select
+        m1_0.id,
+        m1_0.contact,
+        m1_0.date_of_birth,
+        m1_0.email,
+        m1_0.first_name,
+        m1_0.gender,
+        m1_0.joining_date,
+        m1_0.last_name,
+        m1_0.middle_name,
+        m1_0.type 
+    from
+        member m1_0
+2025-05-01 20:20:53 - 
+    select
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        m1_0.id,
+        m1_0.contact,
+        m1_0.date_of_birth,
+        m1_0.email,
+        m1_0.first_name,
+        m1_0.gender,
+        m1_0.joining_date,
+        m1_0.last_name,
+        m1_0.middle_name,
+        m1_0.type,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        member m1_0 
+            on m1_0.id=u1_0.member_id 
+    where
+        u1_0.member_id=?
+2025-05-01 20:20:53 - 
+    select
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        m1_0.id,
+        m1_0.contact,
+        m1_0.date_of_birth,
+        m1_0.email,
+        m1_0.first_name,
+        m1_0.gender,
+        m1_0.joining_date,
+        m1_0.last_name,
+        m1_0.middle_name,
+        m1_0.type,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        member m1_0 
+            on m1_0.id=u1_0.member_id 
+    where
+        u1_0.member_id=?
+2025-05-01 20:21:01 - 
+    select
+        c1_0.id,
+        c1_0.created_date,
+        c1_0.name,
+        c1_0.notes,
+        c1_0.short_name 
+    from
+        category c1_0 
+    where
+        c1_0.id=?
+2025-05-01 20:21:01 - 
+    select
+        b1_0.id,
+        b1_0.authors,
+        b1_0.category_id,
+        b1_0.created_date,
+        b1_0.isbn,
+        b1_0.num_of_copies,
+        b1_0.publisher,
+        b1_0.status,
+        b1_0.tag,
+        b1_0.title,
+        b1_0.year_of_publication 
+    from
+        book b1_0 
+    where
+        b1_0.category_id=? 
+        and b1_0.status=?
+2025-05-01 20:21:08 - 
+    select
+        m1_0.id,
+        m1_0.contact,
+        m1_0.date_of_birth,
+        m1_0.email,
+        m1_0.first_name,
+        m1_0.gender,
+        m1_0.joining_date,
+        m1_0.last_name,
+        m1_0.middle_name,
+        m1_0.type,
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        member m1_0 
+    left join
+        users u1_0 
+            on m1_0.id=u1_0.member_id 
+    where
+        m1_0.id=?
+2025-05-01 20:21:08 - 
+    select
+        b1_0.id,
+        b1_0.authors,
+        b1_0.category_id,
+        c1_0.id,
+        c1_0.created_date,
+        c1_0.name,
+        c1_0.notes,
+        c1_0.short_name,
+        b1_0.created_date,
+        b1_0.isbn,
+        b1_0.num_of_copies,
+        b1_0.publisher,
+        b1_0.status,
+        b1_0.tag,
+        b1_0.title,
+        b1_0.year_of_publication 
+    from
+        book b1_0 
+    join
+        category c1_0 
+            on c1_0.id=b1_0.category_id 
+    where
+        b1_0.id=?
+2025-05-01 20:21:08 - 
+    insert 
+    into
+        issue
+        (created_date, expected_return_date, issue_date, member_id, notes, return_date, status, type) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?)
+2025-05-01 20:21:08 - 
+    update
+        book 
+    set
+        authors=?,
+        category_id=?,
+        created_date=?,
+        isbn=?,
+        num_of_copies=?,
+        publisher=?,
+        status=?,
+        tag=?,
+        title=?,
+        year_of_publication=? 
+    where
+        id=?
+2025-05-01 20:21:08 - 
+    insert 
+    into
+        issued_book
+        (book_id, issue_id, returned, returned_date) 
+    values
+        (?, ?, ?, ?)
+2025-05-01 20:21:08 - 
+    select
+        c1_0.id,
+        c1_0.created_date,
+        c1_0.name,
+        c1_0.notes,
+        c1_0.short_name 
+    from
+        category c1_0 
+    order by
+        c1_0.name
+2025-05-01 20:21:08 - 
+    select
+        m1_0.id,
+        m1_0.contact,
+        m1_0.date_of_birth,
+        m1_0.email,
+        m1_0.first_name,
+        m1_0.gender,
+        m1_0.joining_date,
+        m1_0.last_name,
+        m1_0.middle_name,
+        m1_0.type 
+    from
+        member m1_0
+2025-05-01 20:21:08 - 
+    select
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        m1_0.id,
+        m1_0.contact,
+        m1_0.date_of_birth,
+        m1_0.email,
+        m1_0.first_name,
+        m1_0.gender,
+        m1_0.joining_date,
+        m1_0.last_name,
+        m1_0.middle_name,
+        m1_0.type,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        member m1_0 
+            on m1_0.id=u1_0.member_id 
+    where
+        u1_0.member_id=?
+2025-05-01 20:21:08 - 
+    select
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        m1_0.id,
+        m1_0.contact,
+        m1_0.date_of_birth,
+        m1_0.email,
+        m1_0.first_name,
+        m1_0.gender,
+        m1_0.joining_date,
+        m1_0.last_name,
+        m1_0.middle_name,
+        m1_0.type,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        member m1_0 
+            on m1_0.id=u1_0.member_id 
+    where
+        u1_0.member_id=?
+2025-05-01 20:21:16 - 
+    select
+        c1_0.id,
+        c1_0.created_date,
+        c1_0.name,
+        c1_0.notes,
+        c1_0.short_name 
+    from
+        category c1_0 
+    order by
+        c1_0.name
+2025-05-01 20:21:16 - 
+    select
+        i1_0.id,
+        i1_0.created_date,
+        i1_0.expected_return_date,
+        i1_0.issue_date,
+        i1_0.member_id,
+        i1_0.notes,
+        i1_0.return_date,
+        i1_0.status,
+        i1_0.type 
+    from
+        issue i1_0
+2025-05-01 20:21:16 - 
+    select
+        m1_0.id,
+        m1_0.contact,
+        m1_0.date_of_birth,
+        m1_0.email,
+        m1_0.first_name,
+        m1_0.gender,
+        m1_0.joining_date,
+        m1_0.last_name,
+        m1_0.middle_name,
+        m1_0.type,
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        member m1_0 
+    left join
+        users u1_0 
+            on m1_0.id=u1_0.member_id 
+    where
+        m1_0.id=?
+2025-05-01 20:21:16 - 
+    select
+        ib1_0.issue_id,
+        ib1_0.id,
+        ib1_0.book_id,
+        b1_0.id,
+        b1_0.authors,
+        b1_0.category_id,
+        c1_0.id,
+        c1_0.created_date,
+        c1_0.name,
+        c1_0.notes,
+        c1_0.short_name,
+        b1_0.created_date,
+        b1_0.isbn,
+        b1_0.num_of_copies,
+        b1_0.publisher,
+        b1_0.status,
+        b1_0.tag,
+        b1_0.title,
+        b1_0.year_of_publication,
+        ib1_0.returned,
+        ib1_0.returned_date 
+    from
+        issued_book ib1_0 
+    left join
+        book b1_0 
+            on b1_0.id=ib1_0.book_id 
+    left join
+        category c1_0 
+            on c1_0.id=b1_0.category_id 
+    where
+        ib1_0.issue_id=?
+2025-05-01 20:21:16 - 
+    select
+        ib1_0.issue_id,
+        ib1_0.id,
+        ib1_0.book_id,
+        b1_0.id,
+        b1_0.authors,
+        b1_0.category_id,
+        c1_0.id,
+        c1_0.created_date,
+        c1_0.name,
+        c1_0.notes,
+        c1_0.short_name,
+        b1_0.created_date,
+        b1_0.isbn,
+        b1_0.num_of_copies,
+        b1_0.publisher,
+        b1_0.status,
+        b1_0.tag,
+        b1_0.title,
+        b1_0.year_of_publication,
+        ib1_0.returned,
+        ib1_0.returned_date 
+    from
+        issued_book ib1_0 
+    left join
+        book b1_0 
+            on b1_0.id=ib1_0.book_id 
+    left join
+        category c1_0 
+            on c1_0.id=b1_0.category_id 
+    where
+        ib1_0.issue_id=?
+2025-05-01 20:21:23 - 
+    select
+        i1_0.id,
+        i1_0.created_date,
+        i1_0.expected_return_date,
+        i1_0.issue_date,
+        i1_0.member_id,
+        m1_0.id,
+        m1_0.contact,
+        m1_0.date_of_birth,
+        m1_0.email,
+        m1_0.first_name,
+        m1_0.gender,
+        m1_0.joining_date,
+        m1_0.last_name,
+        m1_0.middle_name,
+        m1_0.type,
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username,
+        i1_0.notes,
+        i1_0.return_date,
+        i1_0.status,
+        i1_0.type,
+        ib1_0.issue_id,
+        ib1_0.id,
+        ib1_0.book_id,
+        b1_0.id,
+        b1_0.authors,
+        b1_0.category_id,
+        c1_0.id,
+        c1_0.created_date,
+        c1_0.name,
+        c1_0.notes,
+        c1_0.short_name,
+        b1_0.created_date,
+        b1_0.isbn,
+        b1_0.num_of_copies,
+        b1_0.publisher,
+        b1_0.status,
+        b1_0.tag,
+        b1_0.title,
+        b1_0.year_of_publication,
+        ib1_0.returned,
+        ib1_0.returned_date 
+    from
+        issue i1_0 
+    join
+        member m1_0 
+            on m1_0.id=i1_0.member_id 
+    left join
+        users u1_0 
+            on m1_0.id=u1_0.member_id 
+    left join
+        issued_book ib1_0 
+            on i1_0.id=ib1_0.issue_id 
+    left join
+        book b1_0 
+            on b1_0.id=ib1_0.book_id 
+    left join
+        category c1_0 
+            on c1_0.id=b1_0.category_id 
+    where
+        i1_0.id=?
+2025-05-01 20:21:23 - 
+    update
+        issued_book 
+    set
+        book_id=?,
+        issue_id=?,
+        returned=?,
+        returned_date=? 
+    where
+        id=?
+2025-05-01 20:21:23 - 
+    update
+        book 
+    set
+        authors=?,
+        category_id=?,
+        created_date=?,
+        isbn=?,
+        num_of_copies=?,
+        publisher=?,
+        status=?,
+        tag=?,
+        title=?,
+        year_of_publication=? 
+    where
+        id=?
+2025-05-01 20:21:23 - 
+    update
+        issue 
+    set
+        created_date=?,
+        expected_return_date=?,
+        issue_date=?,
+        member_id=?,
+        notes=?,
+        return_date=?,
+        status=?,
+        type=? 
+    where
+        id=?
+2025-05-01 20:21:23 - 
+    select
+        c1_0.id,
+        c1_0.created_date,
+        c1_0.name,
+        c1_0.notes,
+        c1_0.short_name 
+    from
+        category c1_0 
+    order by
+        c1_0.name
+2025-05-01 20:21:23 - 
+    select
+        i1_0.id,
+        i1_0.created_date,
+        i1_0.expected_return_date,
+        i1_0.issue_date,
+        i1_0.member_id,
+        i1_0.notes,
+        i1_0.return_date,
+        i1_0.status,
+        i1_0.type 
+    from
+        issue i1_0
+2025-05-01 20:21:23 - 
+    select
+        m1_0.id,
+        m1_0.contact,
+        m1_0.date_of_birth,
+        m1_0.email,
+        m1_0.first_name,
+        m1_0.gender,
+        m1_0.joining_date,
+        m1_0.last_name,
+        m1_0.middle_name,
+        m1_0.type,
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        member m1_0 
+    left join
+        users u1_0 
+            on m1_0.id=u1_0.member_id 
+    where
+        m1_0.id=?
+2025-05-01 20:21:23 - 
+    select
+        ib1_0.issue_id,
+        ib1_0.id,
+        ib1_0.book_id,
+        b1_0.id,
+        b1_0.authors,
+        b1_0.category_id,
+        c1_0.id,
+        c1_0.created_date,
+        c1_0.name,
+        c1_0.notes,
+        c1_0.short_name,
+        b1_0.created_date,
+        b1_0.isbn,
+        b1_0.num_of_copies,
+        b1_0.publisher,
+        b1_0.status,
+        b1_0.tag,
+        b1_0.title,
+        b1_0.year_of_publication,
+        ib1_0.returned,
+        ib1_0.returned_date 
+    from
+        issued_book ib1_0 
+    left join
+        book b1_0 
+            on b1_0.id=ib1_0.book_id 
+    left join
+        category c1_0 
+            on c1_0.id=b1_0.category_id 
+    where
+        ib1_0.issue_id=?
+2025-05-01 20:21:23 - 
+    select
+        ib1_0.issue_id,
+        ib1_0.id,
+        ib1_0.book_id,
+        b1_0.id,
+        b1_0.authors,
+        b1_0.category_id,
+        c1_0.id,
+        c1_0.created_date,
+        c1_0.name,
+        c1_0.notes,
+        c1_0.short_name,
+        b1_0.created_date,
+        b1_0.isbn,
+        b1_0.num_of_copies,
+        b1_0.publisher,
+        b1_0.status,
+        b1_0.tag,
+        b1_0.title,
+        b1_0.year_of_publication,
+        ib1_0.returned,
+        ib1_0.returned_date 
+    from
+        issued_book ib1_0 
+    left join
+        book b1_0 
+            on b1_0.id=ib1_0.book_id 
+    left join
+        category c1_0 
+            on c1_0.id=b1_0.category_id 
+    where
+        ib1_0.issue_id=?
+2025-05-01 20:21:26 - 
+    select
+        m1_0.id,
+        m1_0.contact,
+        m1_0.date_of_birth,
+        m1_0.email,
+        m1_0.first_name,
+        m1_0.gender,
+        m1_0.joining_date,
+        m1_0.last_name,
+        m1_0.middle_name,
+        m1_0.type 
+    from
+        member m1_0
+2025-05-01 20:21:26 - 
+    select
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        m1_0.id,
+        m1_0.contact,
+        m1_0.date_of_birth,
+        m1_0.email,
+        m1_0.first_name,
+        m1_0.gender,
+        m1_0.joining_date,
+        m1_0.last_name,
+        m1_0.middle_name,
+        m1_0.type,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        member m1_0 
+            on m1_0.id=u1_0.member_id 
+    where
+        u1_0.member_id=?
+2025-05-01 20:21:26 - 
+    select
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        m1_0.id,
+        m1_0.contact,
+        m1_0.date_of_birth,
+        m1_0.email,
+        m1_0.first_name,
+        m1_0.gender,
+        m1_0.joining_date,
+        m1_0.last_name,
+        m1_0.middle_name,
+        m1_0.type,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        member m1_0 
+            on m1_0.id=u1_0.member_id 
+    where
+        u1_0.member_id=?
+2025-05-01 20:22:22 - 
+    insert 
+    into
+        member
+        (contact, date_of_birth, email, first_name, gender, joining_date, last_name, middle_name, type) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?)
+2025-05-01 20:22:22 - 
+    insert 
+    into
+        users
+        (active, created_date, display_name, member_id, password, role, username) 
+    values
+        (?, ?, ?, ?, ?, ?, ?)
+2025-05-01 20:22:22 - 
+    select
+        m1_0.id,
+        m1_0.contact,
+        m1_0.date_of_birth,
+        m1_0.email,
+        m1_0.first_name,
+        m1_0.gender,
+        m1_0.joining_date,
+        m1_0.last_name,
+        m1_0.middle_name,
+        m1_0.type 
+    from
+        member m1_0
+2025-05-01 20:22:22 - 
+    select
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        m1_0.id,
+        m1_0.contact,
+        m1_0.date_of_birth,
+        m1_0.email,
+        m1_0.first_name,
+        m1_0.gender,
+        m1_0.joining_date,
+        m1_0.last_name,
+        m1_0.middle_name,
+        m1_0.type,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        member m1_0 
+            on m1_0.id=u1_0.member_id 
+    where
+        u1_0.member_id=?
+2025-05-01 20:22:22 - 
+    select
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        m1_0.id,
+        m1_0.contact,
+        m1_0.date_of_birth,
+        m1_0.email,
+        m1_0.first_name,
+        m1_0.gender,
+        m1_0.joining_date,
+        m1_0.last_name,
+        m1_0.middle_name,
+        m1_0.type,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        member m1_0 
+            on m1_0.id=u1_0.member_id 
+    where
+        u1_0.member_id=?
+2025-05-01 20:22:22 - 
+    select
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        m1_0.id,
+        m1_0.contact,
+        m1_0.date_of_birth,
+        m1_0.email,
+        m1_0.first_name,
+        m1_0.gender,
+        m1_0.joining_date,
+        m1_0.last_name,
+        m1_0.middle_name,
+        m1_0.type,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    left join
+        member m1_0 
+            on m1_0.id=u1_0.member_id 
+    where
+        u1_0.member_id=?
+2025-05-01 20:22:54 - 
+    select
+        c1_0.id,
+        c1_0.created_date,
+        c1_0.name,
+        c1_0.notes,
+        c1_0.short_name 
+    from
+        category c1_0 
+    order by
+        c1_0.name
+2025-05-01 20:22:54 - 
+    select
+        i1_0.id,
+        i1_0.created_date,
+        i1_0.expected_return_date,
+        i1_0.issue_date,
+        i1_0.member_id,
+        i1_0.notes,
+        i1_0.return_date,
+        i1_0.status,
+        i1_0.type 
+    from
+        issue i1_0
+2025-05-01 20:22:54 - 
+    select
+        m1_0.id,
+        m1_0.contact,
+        m1_0.date_of_birth,
+        m1_0.email,
+        m1_0.first_name,
+        m1_0.gender,
+        m1_0.joining_date,
+        m1_0.last_name,
+        m1_0.middle_name,
+        m1_0.type,
+        u1_0.id,
+        u1_0.active,
+        u1_0.created_date,
+        u1_0.display_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        member m1_0 
+    left join
+        users u1_0 
+            on m1_0.id=u1_0.member_id 
+    where
+        m1_0.id=?
+2025-05-01 20:22:54 - 
+    select
+        ib1_0.issue_id,
+        ib1_0.id,
+        ib1_0.book_id,
+        b1_0.id,
+        b1_0.authors,
+        b1_0.category_id,
+        c1_0.id,
+        c1_0.created_date,
+        c1_0.name,
+        c1_0.notes,
+        c1_0.short_name,
+        b1_0.created_date,
+        b1_0.isbn,
+        b1_0.num_of_copies,
+        b1_0.publisher,
+        b1_0.status,
+        b1_0.tag,
+        b1_0.title,
+        b1_0.year_of_publication,
+        ib1_0.returned,
+        ib1_0.returned_date 
+    from
+        issued_book ib1_0 
+    left join
+        book b1_0 
+            on b1_0.id=ib1_0.book_id 
+    left join
+        category c1_0 
+            on c1_0.id=b1_0.category_id 
+    where
+        ib1_0.issue_id=?
+2025-05-01 20:22:54 - 
+    select
+        ib1_0.issue_id,
+        ib1_0.id,
+        ib1_0.book_id,
+        b1_0.id,
+        b1_0.authors,
+        b1_0.category_id,
+        c1_0.id,
+        c1_0.created_date,
+        c1_0.name,
+        c1_0.notes,
+        c1_0.short_name,
+        b1_0.created_date,
+        b1_0.isbn,
+        b1_0.num_of_copies,
+        b1_0.publisher,
+        b1_0.status,
+        b1_0.tag,
+        b1_0.title,
+        b1_0.year_of_publication,
+        ib1_0.returned,
+        ib1_0.returned_date 
+    from
+        issued_book ib1_0 
+    left join
+        book b1_0 
+            on b1_0.id=ib1_0.book_id 
+    left join
+        category c1_0 
+            on c1_0.id=b1_0.category_id 
+    where
+        ib1_0.issue_id=?
+2025-05-01 20:22:58 - 
+    select
+        c1_0.id,
+        c1_0.created_date,
+        c1_0.name,
+        c1_0.notes,
+        c1_0.short_name 
+    from
+        category c1_0 
+    order by
+        c1_0.name
+2025-05-01 20:22:58 - 
+    select
+        b1_0.id,
+        b1_0.authors,
+        b1_0.category_id,
+        b1_0.created_date,
+        b1_0.isbn,
+        b1_0.num_of_copies,
+        b1_0.publisher,
+        b1_0.status,
+        b1_0.tag,
+        b1_0.title,
+        b1_0.year_of_publication 
+    from
+        book b1_0

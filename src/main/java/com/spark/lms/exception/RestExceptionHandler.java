@@ -8,10 +8,17 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.DisabledException;
+import org.springframework.security.authentication.LockedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -63,6 +70,30 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         logger.error("Validation error", ex);
         return buildResponseEntity(apiError);
     }
+    
+    /**
+     * Handle MissingServletRequestParameterException. Triggered when a required request parameter is missing.
+     */
+    @Override
+    protected ResponseEntity<Object> handleMissingServletRequestParameter(MissingServletRequestParameterException ex,
+            HttpHeaders headers, HttpStatusCode status, WebRequest request) {
+        String error = ex.getParameterName() + " parameter is missing";
+        logger.error(error, ex);
+        return buildResponseEntity(new ApiError(HttpStatus.BAD_REQUEST, error, ex));
+    }
+    
+    /**
+     * Handle NoHandlerFoundException. Triggered when the requested URL doesn't match any handler.
+     */
+    @Override
+    protected ResponseEntity<Object> handleNoHandlerFoundException(NoHandlerFoundException ex,
+            HttpHeaders headers, HttpStatusCode status, WebRequest request) {
+        ApiError apiError = new ApiError(HttpStatus.NOT_FOUND);
+        apiError.setMessage("No handler found for " + ex.getHttpMethod() + " " + ex.getRequestURL());
+        apiError.setDebugMessage(ex.getMessage());
+        logger.error("No handler found", ex);
+        return buildResponseEntity(apiError);
+    }
 
     /**
      * Handle EntityNotFoundException
@@ -98,13 +129,47 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     /**
+     * Handle ValidationException
+     */
+    @ExceptionHandler(ValidationException.class)
+    protected ResponseEntity<Object> handleValidationException(ValidationException ex) {
+        ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST);
+        apiError.setMessage(ex.getMessage());
+        apiError.setValidationErrors(ex.getErrors());
+        logger.error("Validation error: {}", ex.getMessage());
+        return buildResponseEntity(apiError);
+    }
+
+    /**
      * Handle AccessDeniedException
      */
     @ExceptionHandler(AccessDeniedException.class)
     protected ResponseEntity<Object> handleAccessDenied(AccessDeniedException ex) {
         ApiError apiError = new ApiError(HttpStatus.FORBIDDEN);
-        apiError.setMessage(ex.getMessage());
+        apiError.setMessage("Access denied: " + ex.getMessage());
         logger.error("Access denied: {}", ex.getMessage());
+        return buildResponseEntity(apiError);
+    }
+    
+    /**
+     * Handle Spring Security authentication exceptions
+     */
+    @ExceptionHandler({BadCredentialsException.class, DisabledException.class, LockedException.class})
+    protected ResponseEntity<Object> handleAuthenticationException(Exception ex) {
+        ApiError apiError = new ApiError(HttpStatus.UNAUTHORIZED);
+        
+        if (ex instanceof BadCredentialsException) {
+            apiError.setMessage("Invalid username or password");
+        } else if (ex instanceof DisabledException) {
+            apiError.setMessage("Account is disabled");
+        } else if (ex instanceof LockedException) {
+            apiError.setMessage("Account is locked");
+        } else {
+            apiError.setMessage("Authentication failed");
+        }
+        
+        apiError.setDebugMessage(ex.getMessage());
+        logger.error("Authentication error: {}", ex.getMessage());
         return buildResponseEntity(apiError);
     }
 
@@ -126,7 +191,40 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         logger.error("Data integrity violation", ex);
         return buildResponseEntity(apiError);
     }
-
+    
+    /**
+     * Handle ConstraintViolationException, happens when @Validated fails
+     */
+    @ExceptionHandler(ConstraintViolationException.class)
+    protected ResponseEntity<Object> handleConstraintViolation(ConstraintViolationException ex) {
+        ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST);
+        apiError.setMessage("Validation error");
+        
+        ex.getConstraintViolations().forEach(violation -> {
+            apiError.addValidationError(
+                violation.getRootBeanClass().getSimpleName(),
+                violation.getPropertyPath().toString(),
+                violation.getInvalidValue(),
+                violation.getMessage());
+        });
+        
+        logger.error("Constraint violation", ex);
+        return buildResponseEntity(apiError);
+    }
+    
+    /**
+     * Handle MethodArgumentTypeMismatchException, happens when method argument is not the expected type
+     */
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    protected ResponseEntity<Object> handleMethodArgumentTypeMismatch(MethodArgumentTypeMismatchException ex) {
+        ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST);
+        apiError.setMessage(String.format("The parameter '%s' of value '%s' could not be converted to type '%s'",
+                ex.getName(), ex.getValue(), ex.getRequiredType().getSimpleName()));
+        apiError.setDebugMessage(ex.getMessage());
+        logger.error("Method argument type mismatch", ex);
+        return buildResponseEntity(apiError);
+    }
+    
     /**
      * Handle general exceptions
      */
@@ -157,6 +255,10 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         
         if (message.contains("unique constraint") || message.contains("Duplicate entry")) {
             return "A record with the same unique identifier already exists";
+        }
+        
+        if (message.contains("not-null constraint")) {
+            return "Required fields cannot be empty";
         }
         
         return "Database constraint violation";

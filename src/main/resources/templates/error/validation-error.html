@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation Error - LibTrack</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card border-warning">
+            <div class="card-header bg-warning text-white">
+                <h3>Validation Error</h3>
+            </div>
+            <div class="card-body">
+                <h4 class="card-title">The submitted data contains errors</h4>
+                <p class="card-text" th:text="${message}">Error message will be displayed here.</p>
+                
+                <!-- Display validation errors if available -->
+                <div th:if="${errors != null}">
+                    <h5>Validation Errors:</h5>
+                    <ul class="list-group mb-3">
+                        <li class="list-group-item list-group-item-danger" th:each="error : ${errors}" th:text="${error.key + ': ' + error.value}"></li>
+                    </ul>
+                </div>
+                
+                <!-- Display field errors if available -->
+                <div th:if="${violations != null}">
+                    <h5>Constraint Violations:</h5>
+                    <ul class="list-group mb-3">
+                        <li class="list-group-item list-group-item-danger" th:each="violation : ${violations}" th:text="${violation.propertyPath + ': ' + violation.message}"></li>
+                    </ul>
+                </div>
+                
+                <p class="card-text">
+                    <small class="text-muted">
+                        Time: <span th:text="${timestamp}">Timestamp</span>
+                    </small>
+                </p>
+                <p class="card-text">
+                    <small class="text-muted">
+                        URL: <span th:text="${url}">URL</span>
+                    </small>
+                </p>
+                <a href="javascript:history.back()" class="btn btn-secondary">Go Back</a>
+                <a href="/" class="btn btn-primary">Return to Home</a>
+            </div>
+        </div>
+    </div>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

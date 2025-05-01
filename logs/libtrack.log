@@ -6028,3 +6028,242 @@ org.springframework.web.servlet.resource.NoResourceFoundException: No static res
 	at java.base/java.lang.Thread.run(Thread.java:840)
 2025-04-18 19:12:37 [http-nio-8080-exec-9] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
 2025-04-18 19:12:37 [http-nio-8080-exec-9] INFO  c.s.l.c.LoggingInterceptor - Completed: GET /favicon.ico, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-3] INFO  c.s.l.c.LoggingInterceptor - Request: GET /member/list from 0:0:0:0:0:0:0:1
+2025-04-18 19:24:40 [http-nio-8080-exec-3] DEBUG c.s.lms.controller.MemberController - Displaying member list
+2025-04-18 19:24:40 [http-nio-8080-exec-3] DEBUG com.spark.lms.service.MemberService - Fetching all members
+2025-04-18 19:24:40 [http-nio-8080-exec-3] DEBUG c.s.l.c.LoggingInterceptor - Post handle: GET /member/list, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-3] WARN  o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-3][member/list] Deprecated unwrapped fragment expression "fragments/styles :: common" found in template member/list, line 12, col 11. Please use the complete syntax of fragment expressions instead ("~{fragments/styles :: common}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-04-18 19:24:40 [http-nio-8080-exec-3] WARN  o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-3][member/list] Deprecated unwrapped fragment expression "fragments/styles :: datatable" found in template member/list, line 13, col 11. Please use the complete syntax of fragment expressions instead ("~{fragments/styles :: datatable}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-04-18 19:24:40 [http-nio-8080-exec-3] WARN  o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-3][member/list] Deprecated unwrapped fragment expression "fragments/sidemenu :: menu" found in template member/list, line 20, col 14. Please use the complete syntax of fragment expressions instead ("~{fragments/sidemenu :: menu}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-04-18 19:24:40 [http-nio-8080-exec-3] WARN  o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-3][member/list] Deprecated unwrapped fragment expression "fragments/topmenu :: menu" found in template member/list, line 21, col 14. Please use the complete syntax of fragment expressions instead ("~{fragments/topmenu :: menu}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-04-18 19:24:40 [http-nio-8080-exec-3] WARN  o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-3][member/list] Deprecated unwrapped fragment expression "fragments/footer :: footer" found in template member/list, line 100, col 14. Please use the complete syntax of fragment expressions instead ("~{fragments/footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-04-18 19:24:40 [http-nio-8080-exec-3] WARN  o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-3][member/list] Deprecated unwrapped fragment expression "fragments/scripts :: common" found in template member/list, line 105, col 12. Please use the complete syntax of fragment expressions instead ("~{fragments/scripts :: common}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-04-18 19:24:40 [http-nio-8080-exec-3] WARN  o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-3][member/list] Deprecated unwrapped fragment expression "fragments/scripts :: datatable" found in template member/list, line 106, col 12. Please use the complete syntax of fragment expressions instead ("~{fragments/scripts :: datatable}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-04-18 19:24:40 [http-nio-8080-exec-3] INFO  c.s.l.c.LoggingInterceptor - Completed: GET /member/list, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-6] INFO  c.s.l.c.LoggingInterceptor - Request: GET /vendors/bootstrap/dist/css/bootstrap.min.css from 0:0:0:0:0:0:0:1
+2025-04-18 19:24:40 [http-nio-8080-exec-9] INFO  c.s.l.c.LoggingInterceptor - Request: GET /custom/css/custom.min.css from 0:0:0:0:0:0:0:1
+2025-04-18 19:24:40 [http-nio-8080-exec-8] INFO  c.s.l.c.LoggingInterceptor - Request: GET /vendors/font-awesome/css/font-awesome.min.css from 0:0:0:0:0:0:0:1
+2025-04-18 19:24:40 [http-nio-8080-exec-7] INFO  c.s.l.c.LoggingInterceptor - Request: GET /custom/css/common.css from 0:0:0:0:0:0:0:1
+2025-04-18 19:24:40 [http-nio-8080-exec-10] INFO  c.s.l.c.LoggingInterceptor - Request: GET /vendors/datatables.net-bs/css/dataTables.bootstrap.min.css from 0:0:0:0:0:0:0:1
+2025-04-18 19:24:40 [http-nio-8080-exec-1] INFO  c.s.l.c.LoggingInterceptor - Request: GET /vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css from 0:0:0:0:0:0:0:1
+2025-04-18 19:24:40 [http-nio-8080-exec-9] DEBUG c.s.l.c.LoggingInterceptor - Post handle: GET /custom/css/custom.min.css, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-6] DEBUG c.s.l.c.LoggingInterceptor - Post handle: GET /vendors/bootstrap/dist/css/bootstrap.min.css, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-9] INFO  c.s.l.c.LoggingInterceptor - Completed: GET /custom/css/custom.min.css, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-6] INFO  c.s.l.c.LoggingInterceptor - Completed: GET /vendors/bootstrap/dist/css/bootstrap.min.css, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-7] DEBUG c.s.l.c.LoggingInterceptor - Post handle: GET /custom/css/common.css, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-7] INFO  c.s.l.c.LoggingInterceptor - Completed: GET /custom/css/common.css, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-8] DEBUG c.s.l.c.LoggingInterceptor - Post handle: GET /vendors/font-awesome/css/font-awesome.min.css, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-9] INFO  c.s.l.c.LoggingInterceptor - Request: GET /vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css from 0:0:0:0:0:0:0:1
+2025-04-18 19:24:40 [http-nio-8080-exec-8] INFO  c.s.l.c.LoggingInterceptor - Completed: GET /vendors/font-awesome/css/font-awesome.min.css, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-6] INFO  c.s.l.c.LoggingInterceptor - Request: GET /vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css from 0:0:0:0:0:0:0:1
+2025-04-18 19:24:40 [http-nio-8080-exec-1] DEBUG c.s.l.c.LoggingInterceptor - Post handle: GET /vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-1] INFO  c.s.l.c.LoggingInterceptor - Completed: GET /vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-7] INFO  c.s.l.c.LoggingInterceptor - Request: GET /vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css from 0:0:0:0:0:0:0:1
+2025-04-18 19:24:40 [http-nio-8080-exec-6] DEBUG c.s.l.c.LoggingInterceptor - Post handle: GET /vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-10] DEBUG c.s.l.c.LoggingInterceptor - Post handle: GET /vendors/datatables.net-bs/css/dataTables.bootstrap.min.css, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-6] INFO  c.s.l.c.LoggingInterceptor - Completed: GET /vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-10] INFO  c.s.l.c.LoggingInterceptor - Completed: GET /vendors/datatables.net-bs/css/dataTables.bootstrap.min.css, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-8] INFO  c.s.l.c.LoggingInterceptor - Request: GET /images/user.png from 0:0:0:0:0:0:0:1
+2025-04-18 19:24:40 [http-nio-8080-exec-9] DEBUG c.s.l.c.LoggingInterceptor - Post handle: GET /vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-8] DEBUG c.s.l.c.LoggingInterceptor - Post handle: GET /images/user.png, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-9] INFO  c.s.l.c.LoggingInterceptor - Completed: GET /vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-10] INFO  c.s.l.c.LoggingInterceptor - Request: GET /vendors/datatables.net/js/jquery.dataTables.min.js from 0:0:0:0:0:0:0:1
+2025-04-18 19:24:40 [http-nio-8080-exec-6] INFO  c.s.l.c.LoggingInterceptor - Request: GET /vendors/bootstrap/dist/js/bootstrap.min.js from 0:0:0:0:0:0:0:1
+2025-04-18 19:24:40 [http-nio-8080-exec-7] DEBUG c.s.l.c.LoggingInterceptor - Post handle: GET /vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-7] INFO  c.s.l.c.LoggingInterceptor - Completed: GET /vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-9] INFO  c.s.l.c.LoggingInterceptor - Request: GET /custom/js/custom.min.js from 0:0:0:0:0:0:0:1
+2025-04-18 19:24:40 [http-nio-8080-exec-5] INFO  c.s.l.c.LoggingInterceptor - Request: GET /vendors/jquery/dist/jquery.min.js from 0:0:0:0:0:0:0:1
+2025-04-18 19:24:40 [http-nio-8080-exec-8] INFO  c.s.l.c.LoggingInterceptor - Completed: GET /images/user.png, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-7] INFO  c.s.l.c.LoggingInterceptor - Request: GET /vendors/datatables.net-bs/js/dataTables.bootstrap.min.js from 0:0:0:0:0:0:0:1
+2025-04-18 19:24:40 [http-nio-8080-exec-8] INFO  c.s.l.c.LoggingInterceptor - Request: GET /vendors/datatables.net-buttons/js/dataTables.buttons.min.js from 0:0:0:0:0:0:0:1
+2025-04-18 19:24:40 [http-nio-8080-exec-5] DEBUG c.s.l.c.LoggingInterceptor - Post handle: GET /vendors/jquery/dist/jquery.min.js, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-5] INFO  c.s.l.c.LoggingInterceptor - Completed: GET /vendors/jquery/dist/jquery.min.js, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-10] DEBUG c.s.l.c.LoggingInterceptor - Post handle: GET /vendors/datatables.net/js/jquery.dataTables.min.js, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-6] DEBUG c.s.l.c.LoggingInterceptor - Post handle: GET /vendors/bootstrap/dist/js/bootstrap.min.js, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-7] DEBUG c.s.l.c.LoggingInterceptor - Post handle: GET /vendors/datatables.net-bs/js/dataTables.bootstrap.min.js, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-6] INFO  c.s.l.c.LoggingInterceptor - Completed: GET /vendors/bootstrap/dist/js/bootstrap.min.js, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-10] INFO  c.s.l.c.LoggingInterceptor - Completed: GET /vendors/datatables.net/js/jquery.dataTables.min.js, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-8] DEBUG c.s.l.c.LoggingInterceptor - Post handle: GET /vendors/datatables.net-buttons/js/dataTables.buttons.min.js, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-8] INFO  c.s.l.c.LoggingInterceptor - Completed: GET /vendors/datatables.net-buttons/js/dataTables.buttons.min.js, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-7] INFO  c.s.l.c.LoggingInterceptor - Completed: GET /vendors/datatables.net-bs/js/dataTables.bootstrap.min.js, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-9] DEBUG c.s.l.c.LoggingInterceptor - Post handle: GET /custom/js/custom.min.js, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-9] INFO  c.s.l.c.LoggingInterceptor - Completed: GET /custom/js/custom.min.js, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-5] INFO  c.s.l.c.LoggingInterceptor - Request: GET /vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js from 0:0:0:0:0:0:0:1
+2025-04-18 19:24:40 [http-nio-8080-exec-8] INFO  c.s.l.c.LoggingInterceptor - Request: GET /vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js from 0:0:0:0:0:0:0:1
+2025-04-18 19:24:40 [http-nio-8080-exec-9] INFO  c.s.l.c.LoggingInterceptor - Request: GET /vendors/datatables.net-keytable/js/dataTables.keyTable.min.js from 0:0:0:0:0:0:0:1
+2025-04-18 19:24:40 [http-nio-8080-exec-7] INFO  c.s.l.c.LoggingInterceptor - Request: GET /vendors/datatables.net-buttons/js/buttons.print.min.js from 0:0:0:0:0:0:0:1
+2025-04-18 19:24:40 [http-nio-8080-exec-10] INFO  c.s.l.c.LoggingInterceptor - Request: GET /vendors/datatables.net-buttons/js/buttons.flash.min.js from 0:0:0:0:0:0:0:1
+2025-04-18 19:24:40 [http-nio-8080-exec-5] DEBUG c.s.l.c.LoggingInterceptor - Post handle: GET /vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-5] INFO  c.s.l.c.LoggingInterceptor - Completed: GET /vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-9] DEBUG c.s.l.c.LoggingInterceptor - Post handle: GET /vendors/datatables.net-keytable/js/dataTables.keyTable.min.js, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-9] INFO  c.s.l.c.LoggingInterceptor - Completed: GET /vendors/datatables.net-keytable/js/dataTables.keyTable.min.js, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-6] INFO  c.s.l.c.LoggingInterceptor - Request: GET /vendors/datatables.net-buttons/js/buttons.html5.min.js from 0:0:0:0:0:0:0:1
+2025-04-18 19:24:40 [http-nio-8080-exec-8] DEBUG c.s.l.c.LoggingInterceptor - Post handle: GET /vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-8] INFO  c.s.l.c.LoggingInterceptor - Completed: GET /vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-5] INFO  c.s.l.c.LoggingInterceptor - Request: GET /vendors/datatables.net-responsive/js/dataTables.responsive.min.js from 0:0:0:0:0:0:0:1
+2025-04-18 19:24:40 [http-nio-8080-exec-5] DEBUG c.s.l.c.LoggingInterceptor - Post handle: GET /vendors/datatables.net-responsive/js/dataTables.responsive.min.js, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-5] INFO  c.s.l.c.LoggingInterceptor - Completed: GET /vendors/datatables.net-responsive/js/dataTables.responsive.min.js, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-9] INFO  c.s.l.c.LoggingInterceptor - Request: GET /vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js from 0:0:0:0:0:0:0:1
+2025-04-18 19:24:40 [http-nio-8080-exec-8] INFO  c.s.l.c.LoggingInterceptor - Request: GET /vendors/datatables.net-scroller/js/dataTables.scroller.min.js from 0:0:0:0:0:0:0:1
+2025-04-18 19:24:40 [http-nio-8080-exec-7] DEBUG c.s.l.c.LoggingInterceptor - Post handle: GET /vendors/datatables.net-buttons/js/buttons.print.min.js, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-7] INFO  c.s.l.c.LoggingInterceptor - Completed: GET /vendors/datatables.net-buttons/js/buttons.print.min.js, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-8] DEBUG c.s.l.c.LoggingInterceptor - Post handle: GET /vendors/datatables.net-scroller/js/dataTables.scroller.min.js, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-8] INFO  c.s.l.c.LoggingInterceptor - Completed: GET /vendors/datatables.net-scroller/js/dataTables.scroller.min.js, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-7] INFO  c.s.l.c.LoggingInterceptor - Request: GET /vendors/pdfmake/build/pdfmake.min.js from 0:0:0:0:0:0:0:1
+2025-04-18 19:24:40 [http-nio-8080-exec-9] DEBUG c.s.l.c.LoggingInterceptor - Post handle: GET /vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-9] INFO  c.s.l.c.LoggingInterceptor - Completed: GET /vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-10] DEBUG c.s.l.c.LoggingInterceptor - Post handle: GET /vendors/datatables.net-buttons/js/buttons.flash.min.js, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-5] INFO  c.s.l.c.LoggingInterceptor - Request: GET /vendors/jszip/dist/jszip.min.js from 0:0:0:0:0:0:0:1
+2025-04-18 19:24:40 [http-nio-8080-exec-8] INFO  c.s.l.c.LoggingInterceptor - Request: GET /vendors/pdfmake/build/vfs_fonts.js from 0:0:0:0:0:0:0:1
+2025-04-18 19:24:40 [http-nio-8080-exec-10] INFO  c.s.l.c.LoggingInterceptor - Completed: GET /vendors/datatables.net-buttons/js/buttons.flash.min.js, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-6] DEBUG c.s.l.c.LoggingInterceptor - Post handle: GET /vendors/datatables.net-buttons/js/buttons.html5.min.js, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-6] INFO  c.s.l.c.LoggingInterceptor - Completed: GET /vendors/datatables.net-buttons/js/buttons.html5.min.js, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-6] INFO  c.s.l.c.LoggingInterceptor - Request: GET /custom/js/member/list.js from 0:0:0:0:0:0:0:1
+2025-04-18 19:24:40 [http-nio-8080-exec-10] INFO  c.s.l.c.LoggingInterceptor - Request: GET /vendors/font-awesome/fonts/fontawesome-webfont.woff2 from 0:0:0:0:0:0:0:1
+2025-04-18 19:24:40 [http-nio-8080-exec-6] DEBUG c.s.l.c.LoggingInterceptor - Post handle: GET /custom/js/member/list.js, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-5] DEBUG c.s.l.c.LoggingInterceptor - Post handle: GET /vendors/jszip/dist/jszip.min.js, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-5] INFO  c.s.l.c.LoggingInterceptor - Completed: GET /vendors/jszip/dist/jszip.min.js, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-6] INFO  c.s.l.c.LoggingInterceptor - Completed: GET /custom/js/member/list.js, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-10] DEBUG c.s.l.c.LoggingInterceptor - Post handle: GET /vendors/font-awesome/fonts/fontawesome-webfont.woff2, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-10] INFO  c.s.l.c.LoggingInterceptor - Completed: GET /vendors/font-awesome/fonts/fontawesome-webfont.woff2, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-8] DEBUG c.s.l.c.LoggingInterceptor - Post handle: GET /vendors/pdfmake/build/vfs_fonts.js, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-8] INFO  c.s.l.c.LoggingInterceptor - Completed: GET /vendors/pdfmake/build/vfs_fonts.js, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-7] DEBUG c.s.l.c.LoggingInterceptor - Post handle: GET /vendors/pdfmake/build/pdfmake.min.js, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-7] INFO  c.s.l.c.LoggingInterceptor - Completed: GET /vendors/pdfmake/build/pdfmake.min.js, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-4] INFO  c.s.l.c.LoggingInterceptor - Request: GET /vendors/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2 from 0:0:0:0:0:0:0:1
+2025-04-18 19:24:40 [http-nio-8080-exec-4] DEBUG c.s.l.c.LoggingInterceptor - Post handle: GET /vendors/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2, status: 200
+2025-04-18 19:24:40 [http-nio-8080-exec-4] INFO  c.s.l.c.LoggingInterceptor - Completed: GET /vendors/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2, status: 200
+2025-04-18 19:24:41 [http-nio-8080-exec-2] INFO  c.s.l.c.LoggingInterceptor - Request: GET /favicon.ico from 0:0:0:0:0:0:0:1
+2025-04-18 19:24:41 [http-nio-8080-exec-2] ERROR c.s.l.e.GlobalExceptionHandler - Unhandled exception: No static resource favicon.ico.
+org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.
+	at org.springframework.web.servlet.resource.ResourceHttpRequestHandler.handleRequest(ResourceHttpRequestHandler.java:585)
+	at org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter.handle(HttpRequestHandlerAdapter.java:52)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.ObservationFilterChainDecorator$FilterObservation$SimpleFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:479)
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:340)
+	at org.springframework.security.web.ObservationFilterChainDecorator.lambda$wrapSecured$0(ObservationFilterChainDecorator.java:82)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:128)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:227)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:117)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$0(ObservationFilterChainDecorator.java:323)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:224)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:109)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-04-18 19:24:41 [http-nio-8080-exec-2] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2025-04-18 19:24:41 [http-nio-8080-exec-2] INFO  c.s.l.c.LoggingInterceptor - Completed: GET /favicon.ico, status: 200
+2025-04-18 19:26:17 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-18 19:26:17 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-04-18 19:26:17 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

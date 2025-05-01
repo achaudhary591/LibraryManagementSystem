@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error - LibTrack</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card border-danger">
+            <div class="card-header bg-danger text-white">
+                <h3>Error</h3>
+            </div>
+            <div class="card-body">
+                <h4 class="card-title">An error occurred</h4>
+                
+                <!-- Display error details if available -->
+                <div th:if="${status}">
+                    <p class="card-text">
+                        <strong>Status:</strong> <span th:text="${status}">Status</span>
+                    </p>
+                </div>
+                
+                <div th:if="${error}">
+                    <p class="card-text">
+                        <strong>Error:</strong> <span th:text="${error}">Error</span>
+                    </p>
+                </div>
+                
+                <div th:if="${message}">
+                    <p class="card-text">
+                        <strong>Message:</strong> <span th:text="${message}">Message</span>
+                    </p>
+                </div>
+                
+                <div th:if="${timestamp}">
+                    <p class="card-text">
+                        <small class="text-muted">
+                            <strong>Time:</strong> <span th:text="${timestamp}">Timestamp</span>
+                        </small>
+                    </p>
+                </div>
+                
+                <div th:if="${path}">
+                    <p class="card-text">
+                        <small class="text-muted">
+                            <strong>Path:</strong> <span th:text="${path}">Path</span>
+                        </small>
+                    </p>
+                </div>
+                
+                <a href="/" class="btn btn-primary">Return to Home</a>
+            </div>
+        </div>
+    </div>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

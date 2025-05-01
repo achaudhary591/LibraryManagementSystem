@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.spark.lms.common.Constants;
@@ -24,6 +25,9 @@ public class SecurityConfiguration {
 
     @Autowired
     private DataSource dataSource;
+    
+    @Autowired
+    private SecurityAuditLogger securityAuditLogger;
 
     @Value("${spring.queries.users-query}")
     private String usersQuery;
@@ -56,24 +60,56 @@ public class SecurityConfiguration {
                 .requestMatchers("/student/books").hasAuthority(Constants.ROLE_STUDENT)
                 .anyRequest().authenticated()
             )
-            .csrf(csrf -> csrf.ignoringRequestMatchers("/rest/**"))
+            // Enable CSRF protection with secure cookie
+            .csrf(csrf -> csrf
+                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+                .ignoringRequestMatchers("/rest/**")
+            )
             .formLogin(form -> form
                 .loginPage("/login")
                 .failureUrl("/login?error=true")
                 .defaultSuccessUrl("/home")
                 .usernameParameter("username")
                 .passwordParameter("password")
+                .successHandler((request, response, authentication) -> {
+                    securityAuditLogger.logLoginSuccess(authentication);
+                    response.sendRedirect("/home");
+                })
+                .failureHandler((request, response, exception) -> {
+                    securityAuditLogger.logLoginFailure(request.getParameter("username"), exception);
+                    response.sendRedirect("/login?error=true");
+                })
             )
             .logout(logout -> logout
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/")
+                .logoutSuccessHandler((request, response, authentication) -> {
+                    securityAuditLogger.logLogout(authentication);
+                    response.sendRedirect("/login?logout=true");
+                })
+                .invalidateHttpSession(true)
+                .clearAuthentication(true)
+                .deleteCookies("JSESSIONID")
             )
             .exceptionHandling(exception -> exception
                 .accessDeniedPage("/access-denied")
             )
             .headers(headers -> headers
-                .contentSecurityPolicy(csp -> csp.policyDirectives("default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;"))
+                .contentSecurityPolicy(csp -> csp.policyDirectives(
+                    "default-src 'self'; " +
+                    "script-src 'self' 'unsafe-inline'; " +
+                    "style-src 'self' 'unsafe-inline'; " +
+                    "img-src 'self' data:; " +
+                    "font-src 'self'; " +
+                    "frame-ancestors 'self'; " +
+                    "form-action 'self'"
+                ))
                 .frameOptions(frame -> frame.sameOrigin())
+            )
+            // Session management
+            .sessionManagement(session -> session
+                .maximumSessions(1)
+                .expiredUrl("/login?expired=true")
             );
             
         return http.build();
